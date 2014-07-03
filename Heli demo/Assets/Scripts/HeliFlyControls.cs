@@ -36,15 +36,15 @@ public class HeliFlyControls : MonoBehaviour {
 		float currentRoll = rigidbody.rotation.eulerAngles.z;
 		if (currentRoll > 180) currentRoll -= 360;
 		//Rotate back toward no pitch and roll
-		rigidbody.AddRelativeTorque(0.0005f*-currentPitch*rigidbody.mass, 0, 0.0005f*-currentRoll*rigidbody.mass);
+		rigidbody.AddRelativeTorque(0.01f*-currentPitch*rigidbody.mass, 0, 0.01f*-currentRoll*rigidbody.mass);
 
 		float pitchInput = Mathf.Clamp(Input.GetAxis("Pitch"), -1, 1);
 		float rollInput = Mathf.Clamp(Input.GetAxis("Roll"), -1, 1);
-		rigidbody.AddRelativeTorque(0.2f*pitchInput*rigidbody.mass, 0, 0.2f*rollInput*rigidbody.mass);
+		rigidbody.AddRelativeTorque(4f*pitchInput*rigidbody.mass, 0, 4f*rollInput*rigidbody.mass);
 
 		//Update yaw
 		float yawInput = Input.GetAxis("Yaw");
-		rigidbody.AddRelativeTorque(0, 0.3f*yawInput*rigidbody.mass, 0);
+		rigidbody.AddRelativeTorque(0, 6f*yawInput*rigidbody.mass, 0);
 
 	}
 }

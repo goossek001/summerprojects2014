@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HeliFlyControls.cs">
     <Files>
-      <File FileName="Assets\Scripts\HeliFlyControls.cs" Line="14" Column="24" />
+      <File FileName="Assets\Scripts\HeliFlyControls.cs" Line="43" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
