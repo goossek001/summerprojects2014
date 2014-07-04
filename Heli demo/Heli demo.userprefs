@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HeliFlyControls.cs">
     <Files>
-      <File FileName="Assets\Scripts\HeliFlyControls.cs" Line="43" Column="65" />
+      <File FileName="Assets\Scripts\HeliFlyControls.cs" Line="58" Column="1" />
+      <File FileName="Assets\Scripts\HeliFlyControls.cs" Line="20" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
