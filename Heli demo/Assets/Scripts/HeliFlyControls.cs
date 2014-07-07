@@ -3,48 +3,28 @@ using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class HeliFlyControls : MonoBehaviour {
-	float maxUpwardsForce;
-	float maxDownwardsForce;
+	public float maxLiftForce;
 
-	float rotationBackForce;
+	public float maxMainBladeTorcForce;
+	public float maxRotorBladeForce;
 
 	// Use this for initialization
-	public void Start () {
-		maxUpwardsForce = 15;
-		maxDownwardsForce = 5;
-	}
+	public void Start () { }
 	
 	// Update is called once per frame
 	public void FixedUpdate () {
-		UpdateLift();
-		UpdateRotation();
-	}
+		//Update lift and trust
+		float liftInput = Input.GetAxis("Lift");
+		Vector3 relativeForce = new Vector3 (0, -Physics.gravity.y*rigidbody.mass + liftInput * maxLiftForce, 0);
+		rigidbody.AddRelativeForce(relativeForce);
 
-	//Add force in the vertical direction of the chopper
-	private void UpdateLift() {
-		float lift = Input.GetAxis("Lift");
-		float verticalForce;
-		if (lift == 0) {
-			verticalForce = -Physics.gravity.y;
-		} else if (lift > 0) {
-			verticalForce = lift * maxUpwardsForce * rigidbody.mass;
-		} else {
-			verticalForce = lift * maxDownwardsForce * rigidbody.mass;
-		}
-
-		Vector3 force = new Vector3 (0, verticalForce, 0);
-		rigidbody.AddRelativeForce(force);
-	}
-
-	//Update rotation in all 3 directions
-	private void UpdateRotation() {
-		//Roll and pitch
+		//Update roll and pitch
 		float pitchInput = Mathf.Clamp(Input.GetAxis("Pitch"), -1, 1);
 		float rollInput = Mathf.Clamp(Input.GetAxis("Roll"), -1, 1);
-		rigidbody.AddRelativeTorque(3f*pitchInput*rigidbody.mass, 0, 3f*rollInput*rigidbody.mass);
+		rigidbody.AddRelativeTorque(maxMainBladeTorcForce*pitchInput, 0, maxMainBladeTorcForce*rollInput);
 
 		//Update yaw
 		float yawInput = Input.GetAxis("Yaw");
-		rigidbody.AddRelativeTorque(0, 8f*yawInput*rigidbody.mass, 0);
+		rigidbody.AddRelativeTorque(0, maxRotorBladeForce*yawInput, 0);
 	}
 }
