@@ -10,8 +10,8 @@ public class HeliFlyControls : MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
-		maxUpwardsForce = 25;
-		maxDownwardsForce = 11;
+		maxUpwardsForce = 15;
+		maxDownwardsForce = 5;
 	}
 	
 	// Update is called once per frame
@@ -38,20 +38,13 @@ public class HeliFlyControls : MonoBehaviour {
 
 	//Update rotation in all 3 directions
 	private void UpdateRotation() {
-		//Slowly rotate back to 0 roll and pitch
-		float currentPitch = rigidbody.rotation.eulerAngles.x;
-		if (currentPitch > 180) currentPitch -= 360;
-		float currentRoll = rigidbody.rotation.eulerAngles.z;
-		if (currentRoll > 180) currentRoll -= 360;
-		rigidbody.AddRelativeTorque(0.01f*-currentPitch*rigidbody.mass, 0, 0.01f*-currentRoll*rigidbody.mass);
-
 		//Roll and pitch
 		float pitchInput = Mathf.Clamp(Input.GetAxis("Pitch"), -1, 1);
 		float rollInput = Mathf.Clamp(Input.GetAxis("Roll"), -1, 1);
-		rigidbody.AddRelativeTorque(4f*pitchInput*rigidbody.mass, 0, 4f*rollInput*rigidbody.mass);
+		rigidbody.AddRelativeTorque(3f*pitchInput*rigidbody.mass, 0, 3f*rollInput*rigidbody.mass);
 
 		//Update yaw
 		float yawInput = Input.GetAxis("Yaw");
-		rigidbody.AddRelativeTorque(0, 6f*yawInput*rigidbody.mass, 0);
+		rigidbody.AddRelativeTorque(0, 8f*yawInput*rigidbody.mass, 0);
 	}
 }
