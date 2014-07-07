@@ -2,7 +2,6 @@
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
-
 //This script make a object fly like a helicopter, with input the object can get increased velocity to the vertical direction of the object and it can rotate over all 3 axes
 public class HeliFlyControls : MonoBehaviour {
 	//Variables that divine how much lift and torque power the helicopter has
