@@ -17,8 +17,8 @@ public class ChopperInput : MonoBehaviour {
 		chopperPhysics = GetComponent<ChopperFlyPhysics> ();
 
 		//Replace the view, that is now the standby camera, with the camera on the chopper
-		firstPersonCamera.SetActive (true);
 		standByCamera.SetActive (false);
+		firstPersonCamera.SetActive (true);
 	}
 
 	//This method is called every physics update and it listen to input to add force or torque to the chopper
@@ -37,7 +37,7 @@ public class ChopperInput : MonoBehaviour {
 	//This method is called at destruction of the object and it change the camera view
 	public void OnDestroy () {
 		//Replace the view, that is now the camera on the chopper, with the standby camera
-		standByCamera.SetActive (true);
 		firstPersonCamera.SetActive (false);
+		standByCamera.SetActive (true);
 	}
 }

@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class NetworkManager : Photon.MonoBehaviour {
+public class NetworkManager : MonoBehaviour {
 	
 	private string version = "v001";
 	
@@ -10,7 +10,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 	private SpawnPoint[] spawnPoints;
 
 	public void Start () {
-		spawnPoints = GetComponents<SpawnPoint>();
+		spawnPoints = GameObject.FindObjectsOfType<SpawnPoint>();
 
 		Connect ();
 	}
@@ -32,12 +32,17 @@ public class NetworkManager : Photon.MonoBehaviour {
 	
 	public void OnJoinedRoom() {
 		Debug.Log ("OnJoinedRoom");
-		SpawnPlayer ();
+		SpawnMyPlayer ();
 	}
 	
-	public void SpawnPlayer() {
-		Debug.Log ("SpawnPlayer");
-				
+	public void SpawnMyPlayer() {
+		Debug.Log ("SpawnMyPlayer");
+
+		SpawnPoint spawnPoint = GetSpawnPoint ();
+		GameObject myPlayerObject = PhotonNetwork.Instantiate (playerPrefabName, spawnPoint.transform.position, spawnPoint.transform.rotation, 0);
+
+		ChopperInput chopperInput = myPlayerObject.GetComponent<ChopperInput> ();
+		chopperInput.enabled = true;
 	}
 
 	public SpawnPoint GetSpawnPoint() {
@@ -48,3 +53,11 @@ public class NetworkManager : Photon.MonoBehaviour {
 		return spawnPoint;
 	}
 }
+
+
+
+
+
+
+
+
