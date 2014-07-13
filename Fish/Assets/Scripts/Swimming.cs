@@ -9,8 +9,8 @@ abstract public class Swimming : MonoBehaviour {
 	public GameObject[] tail;
 
 	//The swimming propeties
-	public float tailPower = 20;
-	public float swimPower = 6;
+	public float turnPower = 20;
+	public float swimPower = 8;
 
 	private HingeJoint2D[] joints;
 
@@ -24,7 +24,7 @@ abstract public class Swimming : MonoBehaviour {
 	}
 
 	protected void Swim (float input) {
-		float torque = input * tailPower;
+		float torque = input * turnPower;
 		for (int i = 0; i < tail.Length; i++) {
 			if (isJointFullyTurned(joints[i])) {
 				tail[i].rigidbody2D.AddTorque(torque);
