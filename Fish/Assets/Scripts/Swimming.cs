@@ -14,7 +14,7 @@ abstract public class Swimming : MonoBehaviour {
 
 	private HingeJoint2D[] joints;
 
-	public void Start () {
+	virtual public void Start () {
 		joints = new HingeJoint2D[tail.Length];
 
 		joints[0] = body.GetComponent<HingeJoint2D>();
