@@ -5,8 +5,9 @@ public class FishAI : Swimming {
 
 	public Collider2D sightArea;
 
-	public float turnDelay = 0.2f;
+	public float turnDelay = 0.1f;
 	private float turnTimer;
+	private int swimDirection;
 	
 	private State state;
 
@@ -16,14 +17,24 @@ public class FishAI : Swimming {
 
 		Vector2 goal = new Vector2 (-transform.position.x, transform.position.y);
 		state = new WanderState (goal);
+		turnTimer = turnDelay;
 	}
 	
 	// Update is called once per frame
-	public void Update () {
+	public void FixedUpdate () {
 		Vector2 goal = state.findNextGoal(this, null/*sightArea.collidingObjects*/);
-		Vector2 direction = (goal - (Vector2)transform.position).normalized;
-		int relativeDirection = (int) Mathf.Sign(Vector2.Dot(direction, -transform.up));
-		Swim(relativeDirection);
+		Vector2 directionVector = goal - (Vector2)transform.position;
+		directionVector.y += -Physics2D.gravity.y * Mathf.Abs(directionVector.x) / rigidbody2D.velocity.magnitude*1.5f;
+		directionVector = directionVector.normalized;
+		int direction = (int) Mathf.Sign(Vector2.Dot(directionVector, -transform.up));
+		if (direction != swimDirection) {
+			turnTimer -= Time.fixedDeltaTime;
+			if (turnTimer <= 0) {
+				swimDirection = direction;
+				turnTimer = turnDelay;
+			}
+		}
+		Swim(swimDirection);
 	}
 
 	public void ChangeState (State newState) {
