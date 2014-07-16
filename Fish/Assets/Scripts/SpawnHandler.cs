@@ -9,7 +9,7 @@ public class SpawnHandler: MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
-		requiredNumberOfFish = 6;
+		requiredNumberOfFish = 10;
 		numberOfFish = 1;
 	}
 	
@@ -28,14 +28,14 @@ public class SpawnHandler: MonoBehaviour {
 		GameObject fish = (GameObject) Instantiate(fishPrefab, (Vector3) position, Quaternion.Euler(0, 0, rotation));
 	}
 
-	public void KillFish() {
+	public void AFishDied() {
 		numberOfFish--;
 	}
 
 	public void OnTriggerExit2D(Collider2D leavingObject) {
 		if (leavingObject.transform.parent == null) {
 			if (leavingObject.gameObject.GetComponent<FishAI>() != null) {
-				numberOfFish--;
+				AFishDied();
 			}
 
 			Destroy (leavingObject.gameObject);

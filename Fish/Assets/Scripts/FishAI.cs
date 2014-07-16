@@ -40,6 +40,10 @@ public class FishAI : Swimming {
 	public void ChangeState (State newState) {
 		state = newState;
 	}
+
+	public void Poke(GameObject other) {
+		//ChangeState(new ChaseState(other));
+	}
 }
 
 public interface State {
