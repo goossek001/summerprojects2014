@@ -1,21 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SpawnHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Swimming.cs">
     <Files>
-      <File FileName="Assets\Scripts\FishAI.cs" Line="27" Column="110" />
-      <File FileName="Assets\Scripts\PlayerInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SpawnHandler.cs" Line="17" Column="25" />
-      <File FileName="Assets\Scripts\Swimming.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FishAI.cs" Line="24" Column="14" />
+      <File FileName="Assets\Scripts\PlayerInput.cs" Line="6" Column="14" />
+      <File FileName="Assets\Scripts\SpawnHandler.cs" Line="28" Column="112" />
+      <File FileName="Assets\Scripts\Swimming.cs" Line="41" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="SpawnHandler.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

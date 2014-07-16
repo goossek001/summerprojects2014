@@ -37,7 +37,7 @@ abstract public class Swimming : MonoBehaviour {
 					float power = (body.rigidbody2D.velocity - tail [tail.Length - 1].rigidbody2D.velocity).magnitude * swimPower;
 					body.rigidbody2D.AddRelativeForce (new Vector2 (power, 0));
 			}
-		} catch (System.Exception exp) {
+		} catch (System.Exception) {
 			//The fish is destroyed
 		}
 		

@@ -33,8 +33,12 @@ public class SpawnHandler: MonoBehaviour {
 	}
 
 	public void OnTriggerExit2D(Collider2D leavingObject) {
-		numberOfFish--;
+		if (leavingObject.transform.parent == null) {
+			if (leavingObject.gameObject.GetComponent<FishAI>() != null) {
+				numberOfFish--;
+			}
 
-		Destroy (leavingObject.gameObject);
+			Destroy (leavingObject.gameObject);
+		}
 	}
 }
