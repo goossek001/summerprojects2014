@@ -23,7 +23,7 @@ public class SpawnHandler: MonoBehaviour {
 	public void SpawnFish() {
 		numberOfFish++;
 		int direction = Random.value < 0.5f ? -1 : 1;
-		Vector2 position = (new Vector2 (transform.position.x + direction * (collider2D.bounds.max.x-1), (Random.value*2-1)*(collider2D.bounds.max.y-1)));
+		Vector2 position = (new Vector2 (transform.position.x + direction * (collider2D.bounds.max.x-1), (Random.value*2-1)*(collider2D.bounds.max.y - 10)));
 		int rotation = direction == -1? 0: 180;
 		GameObject fish = (GameObject) Instantiate(fishPrefab, (Vector3) position, Quaternion.Euler(0, 0, rotation));
 	}
