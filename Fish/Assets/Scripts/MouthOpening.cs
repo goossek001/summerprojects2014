@@ -8,12 +8,16 @@ public class MouthOpening : MonoBehaviour {
 	private Sprite closedMouth;
 	public Sprite openMouth;
 
+	private FishAI ai;
+
 	private int fishCount;
 
 	// Use this for initialization
 	public void Start () {
 		spriteRenderer = transform.parent.GetComponent<SpriteRenderer> ();
 		closedMouth = spriteRenderer.sprite;
+
+		ai = (gameObject.layer == LayerMask.NameToLayer ("Player") ? null : transform.parent.GetComponent<FishAI> ());
 
 		fishCount = 0;
 	}
@@ -28,12 +32,18 @@ public class MouthOpening : MonoBehaviour {
 		while (other != null && other.tag != "Fish") {
 			other = other.transform.parent;
 		}
+		
+		if (other != null) {
+				if (other.transform.localScale.x <= transform.localScale.x) {
+				fishCount++;
 
-		if (other != null && other.transform.localScale.x <= transform.localScale.x) {
-			fishCount++;
-
-			if (fishCount == 1) {
-				spriteRenderer.sprite = openMouth;
+				if (fishCount == 1) {
+					spriteRenderer.sprite = openMouth;
+				}
+			}
+		
+			if (ai != null) {
+				ai.FishLocated(other.gameObject);
 			}
 		}
 	}
@@ -44,11 +54,17 @@ public class MouthOpening : MonoBehaviour {
 			other = other.transform.parent;
 		}
 		
-		if (other != null && other.transform.localScale.x <= transform.localScale.x && fishCount > 0) {
-			fishCount--;
+		if (other != null) {
+			if (other.transform.localScale.x <= transform.localScale.x && fishCount > 0) {
+				fishCount--;
+				
+				if (fishCount == 0) {
+					spriteRenderer.sprite = closedMouth;
+				}
+			}
 			
-			if (fishCount == 0) {
-				spriteRenderer.sprite = closedMouth;
+			if (ai != null) {
+				ai.FishLost(other.gameObject);
 			}
 		}
 	}

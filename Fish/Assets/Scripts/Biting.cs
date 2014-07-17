@@ -22,7 +22,7 @@ public class Biting : MonoBehaviour {
 			} else {
 				FishAI ai = other.GetComponent<FishAI>();
 				if (ai != null) {
-					ai.Poke(gameObject);
+					ai.FishLocated(gameObject);
 				}
 			}
 		}

@@ -22,9 +22,8 @@ public class FishAI : Swimming {
 	
 	// Update is called once per frame
 	public void FixedUpdate () {
-		Vector2 goal = state.findNextGoal(this, null/*sightArea.collidingObjects*/);
+		Vector2 goal = state.findNextGoal(this, null);
 		Vector2 directionVector = goal - (Vector2)transform.position;
-		directionVector.y += -Physics2D.gravity.y * Mathf.Abs(directionVector.x) / rigidbody2D.velocity.magnitude*1.5f;
 		directionVector = directionVector.normalized;
 		int direction = (int) Mathf.Sign(Vector2.Dot(directionVector, -transform.up));
 		if (direction != swimDirection) {
@@ -41,13 +40,23 @@ public class FishAI : Swimming {
 		state = newState;
 	}
 
-	public void Poke(GameObject other) {
-		//ChangeState(new ChaseState(other));
+	public void FishLocated(GameObject fish) {
+		//AddFish(fish);
+
+		state.FishLocated (this, null);
+	}
+	
+	public void FishLost(GameObject fish) {
+		//Remove(fish); 
+		
+		state.FishLost (this, null);
 	}
 }
 
 public interface State {
 	Vector2 findNextGoal (FishAI handler, GameObject[] objectsInSight);
+	void FishLocated (FishAI handler, GameObject[] objectsInSight);
+	void FishLost (FishAI handler, GameObject[] objectsInSight);
 }
 
 public class WanderState: State {
@@ -60,6 +69,13 @@ public class WanderState: State {
 	
 	Vector2 State.findNextGoal (FishAI handler, GameObject[] objectsInSight) {
 		return goal;
+	}
+
+	void State.FishLocated (FishAI handler, GameObject[] objectsInSight) {
+
+	}
+	void State.FishLost (FishAI handler, GameObject[] objectsInSight) {
+
 	}
 }
 /*
