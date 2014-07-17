@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Biting.cs" />
      <Compile Include="Assets\Scripts\FishAI.cs" />
+     <Compile Include="Assets\Scripts\MouthOpening.cs" />
      <Compile Include="Assets\Scripts\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\ScreenSizeHandler.cs" />
      <Compile Include="Assets\Scripts\SpawnHandler.cs" />

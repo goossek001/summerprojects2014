@@ -4,19 +4,21 @@ using System.Collections;
 public class Biting : MonoBehaviour {
 
 	private SpawnHandler spawn;
+	private MouthOpening mouthOpener;
 
 	public void Start () {
 		spawn = Camera.main.GetComponentInChildren<SpawnHandler> ();
+		mouthOpener = GetComponentInChildren<MouthOpening> ();
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision) {
-		GameObject other = collision.gameObject;
-		while (other.tag != "Fish" && other != null) {
-			other = other.transform.parent.gameObject;
+		Transform other = collision.transform;
+		while (other != null && other.tag != "Fish") {
+			other = other.transform.parent;
 		}
-		if (other != null && IsInBiteRange(other)) {
+		if (other != null && IsInBiteRange(other.gameObject)) {
 			if (transform.localScale.y >= other.transform.localScale.y) {
-				Eat(other);
+				Eat(other.gameObject);
 			} else {
 				FishAI ai = other.GetComponent<FishAI>();
 				if (ai != null) {
@@ -30,6 +32,8 @@ public class Biting : MonoBehaviour {
 		CreateBlood (other);
 		Destroy (other);
 		spawn.AFishDied ();
+
+		mouthOpener.CloseMouth ();
 	}
 
 	private void CreateBlood(GameObject eatenFish) {
