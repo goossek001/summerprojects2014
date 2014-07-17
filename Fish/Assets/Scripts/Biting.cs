@@ -29,15 +29,13 @@ public class Biting : MonoBehaviour {
 	}
 
 	private void Eat(GameObject other) {
-		CreateBlood (other);
+		BloodEffectGenerator bloodEffect = other.GetComponentInChildren<BloodEffectGenerator> ();
+		bloodEffect.Activate();
+
 		Destroy (other);
 		spawn.AFishDied ();
 
 		mouthOpener.CloseMouth ();
-	}
-
-	private void CreateBlood(GameObject eatenFish) {
-
 	}
 
 	private bool IsInBiteRange(GameObject other) {
