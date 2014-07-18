@@ -5,7 +5,7 @@ public class FishAI : Swimming {
 
 	public Collider2D sightArea;
 
-	public float turnDelay = 0.1f;
+	public float turnDelay = 0.5f;
 	private float turnTimer;
 	private int swimDirection;
 	

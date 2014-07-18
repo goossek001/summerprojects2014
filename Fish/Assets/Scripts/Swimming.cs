@@ -9,8 +9,9 @@ abstract public class Swimming : MonoBehaviour {
 	public GameObject[] tail;
 
 	//The swimming propeties
-	public float turnPower = 20;
-	public float swimPower = 0.4f;
+	public float turnPower = 10;
+	public float tailSwinPower = 0.2f;
+	public float swimPower = 0.04f;
 
 	private HingeJoint2D[] joints;
 
@@ -22,19 +23,26 @@ abstract public class Swimming : MonoBehaviour {
 			joints[i] = tail[i-1].GetComponent<HingeJoint2D>();
 		}
 
-		turnPower *= Mathf.Pow (transform.localScale.y, 0.7f);
-		swimPower /= Mathf.Pow (transform.localScale.y, 0.4f);
+		turnPower *= Mathf.Pow (transform.localScale.y, 3);
+		tailSwinPower *= Mathf.Pow (transform.localScale.y, 3);
+		swimPower *= Mathf.Pow (transform.localScale.y, 2.4f);
+
+		rigidbody2D.mass *= Mathf.Pow (transform.localScale.y, 2);
+		for (int i = 0; i < transform.childCount; i++) {
+			Rigidbody2D rigidbody = transform.GetChild(i).rigidbody2D;
+			if (rigidbody != null) {
+				rigidbody.mass *= Mathf.Pow (transform.localScale.y, 2);
+			}
+		}
 	}
 
 	protected void Swim (float input) {
 		try {
-			float torque = input * turnPower;
-			for (int i = 0; i < joints.Length; i++) {
-				if (!isJointFullyTurned (joints [i])) {
-					tail [i].rigidbody2D.AddTorque (torque);
-				}
+			float tailSwing = input * tailSwinPower;
+			for (int i = 0; i < tail.Length; i++) {
+				tail [i].rigidbody2D.AddTorque (tailSwing);
 			}
-			body.rigidbody2D.AddTorque (-torque * tail.Length);
+			body.rigidbody2D.AddTorque (-(tailSwing*tailSwinPower * tail.Length + input * turnPower));
 
 			float swimPower = 0;
 			for (int i = 0; i < joints.Length; i++) {
@@ -50,7 +58,19 @@ abstract public class Swimming : MonoBehaviour {
 		
 	}
 
-	private static bool isJointFullyTurned(HingeJoint2D joint) {
-		return !(joint.jointAngle < joint.limits.max && joint.jointAngle > joint.limits.min);
+	private static bool isJointFullyTurned (HingeJoint2D joint, int dirrection) {
+		bool isFullyTurned;
+		if (dirrection > 0) {
+			isFullyTurned = joint.jointAngle >= joint.limits.max*0.96f;
+			if (joint.jointAngle > joint.limits.max) {
+				//joint.jointAngle = joint.limits.max;
+			}
+		} else {
+			isFullyTurned = joint.jointAngle <= joint.limits.min*0.96f;
+			if (joint.jointAngle < joint.limits.min) {
+				//joint.jointAngle = joint.limits.max;
+			}
+		}
+		return isFullyTurned;
 	}
 }
