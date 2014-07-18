@@ -22,7 +22,7 @@ public class Biting : MonoBehaviour {
 			} else {
 				FishAI ai = other.GetComponent<FishAI>();
 				if (ai != null) {
-					ai.FishLocated(gameObject);
+					ai.Poke(gameObject);
 				}
 			}
 		}
@@ -35,6 +35,6 @@ public class Biting : MonoBehaviour {
 		Destroy (other);
 		spawn.AFishDied ();
 
-		mouthOpener.CloseMouth ();
+		mouthOpener.RemoveFish (other);
 	}
 }

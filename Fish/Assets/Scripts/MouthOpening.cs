@@ -10,7 +10,7 @@ public class MouthOpening : MonoBehaviour {
 
 	private FishAI ai;
 
-	private int fishCount;
+	private ArrayList nearFish;
 
 	// Use this for initialization
 	public void Start () {
@@ -19,12 +19,15 @@ public class MouthOpening : MonoBehaviour {
 
 		ai = (gameObject.layer == LayerMask.NameToLayer ("Player") ? null : transform.parent.GetComponent<FishAI> ());
 
-		fishCount = 0;
+		nearFish = new ArrayList (6);
 	}
 
-	public void CloseMouth() {
-		fishCount = 0;
-		spriteRenderer.sprite = closedMouth;
+	public void RemoveFish(GameObject fish) {
+		nearFish.Remove (fish);
+		
+		if (nearFish.Count == 0) {
+			spriteRenderer.sprite = closedMouth;
+		}
 	}
 	
 	public void OnTriggerEnter2D(Collider2D collider) {
@@ -35,10 +38,12 @@ public class MouthOpening : MonoBehaviour {
 		
 		if (other != null) {
 			if (transform.parent.localScale.y > other.transform.localScale.y) {
-				fishCount++;
-
-				if (fishCount == 1) {
-					spriteRenderer.sprite = openMouth;
+				if (!nearFish.Contains(other.gameObject)) {
+					nearFish.Add(other.gameObject);
+					
+					if (nearFish.Count == 1) {
+						spriteRenderer.sprite = openMouth;
+					}
 				}
 			}
 		
@@ -55,12 +60,8 @@ public class MouthOpening : MonoBehaviour {
 		}
 		
 		if (other != null) {
-			if (transform.parent.localScale.y > other.transform.localScale.y) {
-				fishCount--;
-				
-				if (fishCount == 0) {
-					spriteRenderer.sprite = closedMouth;
-				}
+			if (nearFish.Contains(other.gameObject)) {
+				RemoveFish(other.gameObject);
 			}
 			
 			if (ai != null) {

@@ -39,6 +39,14 @@ public class FishAI : Swimming {
 	public void ChangeState (State newState) {
 		state = newState;
 	}
+	
+	public void Poke(GameObject fish) {
+		//AddFish(fish);
+		
+		state.FishLocated (this, null);
+
+		//Remove(fish);
+	}
 
 	public void FishLocated(GameObject fish) {
 		//AddFish(fish);
@@ -74,6 +82,7 @@ public class WanderState: State {
 	void State.FishLocated (FishAI handler, GameObject[] objectsInSight) {
 
 	}
+
 	void State.FishLost (FishAI handler, GameObject[] objectsInSight) {
 
 	}
