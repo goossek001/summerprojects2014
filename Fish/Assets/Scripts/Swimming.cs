@@ -22,18 +22,12 @@ abstract public class Swimming : MonoBehaviour {
 		for (int i = 1; i < joints.Length; i++) {
 			joints[i] = tail[i-1].GetComponent<HingeJoint2D>();
 		}
+	}
 
-		turnPower *= Mathf.Pow (transform.localScale.y, 3);
-		tailSwinPower *= Mathf.Pow (transform.localScale.y, 3);
-		swimPower *= Mathf.Pow (transform.localScale.y, 2.4f);
-
-		rigidbody2D.mass *= Mathf.Pow (transform.localScale.y, 2);
-		for (int i = 0; i < transform.childCount; i++) {
-			Rigidbody2D rigidbody = transform.GetChild(i).rigidbody2D;
-			if (rigidbody != null) {
-				rigidbody.mass *= Mathf.Pow (transform.localScale.y, 2);
-			}
-		}
+	public void GrowhPower(float deltaSize) {
+		turnPower += turnPower * Mathf.Pow (deltaSize, 3);
+		tailSwinPower += tailSwinPower * Mathf.Pow (deltaSize, 3);
+		swimPower += Mathf.Sign (deltaSize) * swimPower * Mathf.Pow (Mathf.Abs(deltaSize), 2.4f);
 	}
 
 	protected void Swim (float input) {

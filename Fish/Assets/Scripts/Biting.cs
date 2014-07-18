@@ -5,6 +5,7 @@ public class Biting : MonoBehaviour {
 
 	private SpawnHandler spawn;
 	private MouthOpening mouthOpener;
+	private Swimming movementScript;
 
 	public float growhRate = 0.1f;
 
@@ -40,10 +41,30 @@ public class Biting : MonoBehaviour {
 		
 		spawn.AFishDied ();
 	}
-
+	
 	private void Growh (GameObject food) {
+		float deltaSize = growhRate * food.transform.localScale.y / transform.localScale.y;
+		Growh (deltaSize);
+	}
+
+	public void Growh (float deltaSize) {
+		if (movementScript == null) {
+			movementScript = GetComponent<Swimming> ();
+		}
+
 		Vector2 localScale = transform.localScale;
-		localScale.x = localScale.y = localScale.y + growhRate * food.transform.localScale.y / localScale.y;
+		localScale.x += deltaSize;
+		localScale.y += deltaSize;
 		transform.localScale = localScale;
+		
+		rigidbody2D.mass += rigidbody2D.mass * Mathf.Pow (deltaSize, 2);
+		for (int i = 0; i < transform.childCount; i++) {
+			Rigidbody2D childRigidbody = transform.GetChild(i).rigidbody2D;
+			if (childRigidbody != null) {
+				childRigidbody.mass += childRigidbody.mass * Mathf.Pow (deltaSize, 2);
+			}
+		}
+
+		movementScript.GrowhPower (deltaSize);
 	}
 }

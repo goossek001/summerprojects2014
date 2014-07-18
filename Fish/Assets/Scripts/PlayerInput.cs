@@ -3,6 +3,10 @@ using System.Collections;
 
 public class PlayerInput : Swimming {
 
+	public override void Start() {
+		base.Start ();
+	}
+
 	public void FixedUpdate () {
 		float input = Input.GetAxis ("Horizontal");
 		if (input != 0) {
