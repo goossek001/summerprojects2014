@@ -34,7 +34,7 @@ public class MouthOpening : MonoBehaviour {
 		}
 		
 		if (other != null) {
-				if (other.transform.localScale.x <= transform.localScale.x) {
+			if (transform.parent.localScale.y > other.transform.localScale.y) {
 				fishCount++;
 
 				if (fishCount == 1) {
@@ -55,7 +55,7 @@ public class MouthOpening : MonoBehaviour {
 		}
 		
 		if (other != null) {
-			if (other.transform.localScale.x <= transform.localScale.x && fishCount > 0) {
+			if (transform.parent.localScale.y > other.transform.localScale.y) {
 				fishCount--;
 				
 				if (fishCount == 0) {

@@ -16,8 +16,8 @@ public class Biting : MonoBehaviour {
 		while (other != null && other.tag != "Fish") {
 			other = other.transform.parent;
 		}
-		if (other != null && IsInBiteRange(other.gameObject)) {
-			if (transform.localScale.y >= other.transform.localScale.y) {
+		if (other != null) {
+			if (transform.localScale.y > other.transform.localScale.y) {
 				Eat(other.gameObject);
 			} else {
 				FishAI ai = other.GetComponent<FishAI>();
@@ -30,20 +30,11 @@ public class Biting : MonoBehaviour {
 
 	private void Eat(GameObject other) {
 		BloodEffectGenerator bloodEffect = other.GetComponentInChildren<BloodEffectGenerator> ();
-		bloodEffect.Activate();
+		if (other != null) bloodEffect.Activate();
 
 		Destroy (other);
 		spawn.AFishDied ();
 
 		mouthOpener.CloseMouth ();
-	}
-
-	private bool IsInBiteRange(GameObject other) {
-		float maxAngle = 90;
-		
-		Vector2 difference = other.transform.position - transform.position;
-		float angle = 90-Mathf.Atan2 (difference.y, difference.x)*180/Mathf.PI - transform.eulerAngles.z;
-
-		return angle <= maxAngle || angle >= 360 - maxAngle;
 	}
 }
