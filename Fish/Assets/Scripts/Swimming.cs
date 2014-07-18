@@ -10,7 +10,7 @@ abstract public class Swimming : MonoBehaviour {
 
 	//The swimming propeties
 	public float turnPower = 20;
-	public float swimPower = 8;
+	public float swimPower = 0.4f;
 
 	private HingeJoint2D[] joints;
 
@@ -21,21 +21,28 @@ abstract public class Swimming : MonoBehaviour {
 		for (int i = 1; i < joints.Length; i++) {
 			joints[i] = tail[i-1].GetComponent<HingeJoint2D>();
 		}
+
+		turnPower *= Mathf.Pow (transform.localScale.y, 0.7f);
+		swimPower /= Mathf.Pow (transform.localScale.y, 0.4f);
 	}
 
 	protected void Swim (float input) {
 		try {
 			float torque = input * turnPower;
-			for (int i = 0; i < tail.Length; i++) {
-					if (isJointFullyTurned (joints [i])) {
-							tail [i].rigidbody2D.AddTorque (torque);
-					}
+			for (int i = 0; i < joints.Length; i++) {
+				if (!isJointFullyTurned (joints [i])) {
+					tail [i].rigidbody2D.AddTorque (torque);
+				}
 			}
-			body.rigidbody2D.AddTorque (-torque * tail.Length * 1.75f);
+			body.rigidbody2D.AddTorque (-torque * tail.Length);
 
-			if (isJointFullyTurned (joints [0])) {
-					float power = (body.rigidbody2D.velocity - tail [tail.Length - 1].rigidbody2D.velocity).magnitude * swimPower;
-					body.rigidbody2D.AddRelativeForce (new Vector2 (power, 0));
+			float swimPower = 0;
+			for (int i = 0; i < joints.Length; i++) {
+				swimPower += Mathf.Abs(joints [i].jointSpeed);
+			}
+			if (swimPower != 0) {
+				swimPower *= this.swimPower;
+				body.rigidbody2D.AddRelativeForce (new Vector2 (swimPower, 0));
 			}
 		} catch (System.Exception) {
 			//The fish is destroyed
@@ -44,6 +51,6 @@ abstract public class Swimming : MonoBehaviour {
 	}
 
 	private static bool isJointFullyTurned(HingeJoint2D joint) {
-		return joint.jointAngle * 0.9f < joint.limits.max && joint.jointAngle * 0.9f > joint.limits.min;
+		return !(joint.jointAngle < joint.limits.max && joint.jointAngle > joint.limits.min);
 	}
 }

@@ -6,6 +6,8 @@ public class Biting : MonoBehaviour {
 	private SpawnHandler spawn;
 	private MouthOpening mouthOpener;
 
+	public float growhRate = 0.1f;
+
 	public void Start () {
 		spawn = Camera.main.GetComponentInChildren<SpawnHandler> ();
 		mouthOpener = GetComponentInChildren<MouthOpening> ();
@@ -28,13 +30,20 @@ public class Biting : MonoBehaviour {
 		}
 	}
 
-	private void Eat(GameObject other) {
-		BloodEffectGenerator bloodEffect = other.GetComponentInChildren<BloodEffectGenerator> ();
-		if (other != null) bloodEffect.Activate();
+	private void Eat(GameObject food) {
+		BloodEffectGenerator bloodEffect = food.GetComponentInChildren<BloodEffectGenerator> ();
+		if (food != null) bloodEffect.Activate();
 
-		Destroy (other);
+		mouthOpener.RemoveFish (food);
+		Growh (food);
+		Destroy (food);
+		
 		spawn.AFishDied ();
+	}
 
-		mouthOpener.RemoveFish (other);
+	private void Growh (GameObject food) {
+		Vector2 localScale = transform.localScale;
+		localScale.x = localScale.y = localScale.y + growhRate * food.transform.localScale.y / localScale.y;
+		transform.localScale = localScale;
 	}
 }
