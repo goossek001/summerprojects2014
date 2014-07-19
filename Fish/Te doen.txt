@@ -1,0 +1,31 @@
+Te Doen:
+
+Hud:
+Een progress bar in de vorm van een maag die aan de speler laat zien hoeveel vis hij moet eten om te groeien
+Een score (aantal en soorten vissen gegeten) (Deze score word vervangen voor tijd wanneer het spel word uitgespeeld)
+
+AI:
+Als een vis een grotere vis in zijn zicht bereik heeft raakt hij in paniek en zwemt weg van het punt waar hij de grotere vis voor het laatst heeft gezien
+Als een vis niet word opgejaagd en een kleinere vis ziet gaat hij op jacht naar deze vis, totdat hij de vis een tijdje niet ziet, hij word afgeleid door een kleinere vis of totdat de andere vis groter dan hem is
+Als een vis niet word afgeleid zemt hij in een rechte lijn van of, van links naar rechts of van rechts naar links.
+
+Eind scene:
+Als je vis het volledige scherm in beslag neem, zoom je langzaam uit en zie je je vis in meer die wat kleiner is dan hem zelf en laat hij een boer
+
+Achtergrond:
+Een waterachtergrond animatie
+
+Willekeurige gebeurtenissen:
+Een haak met worm naar naar een willekeurige hoogte laten zakken, deze gaat weer omhoog wanneer er een vis is gevangen (Het touw kan breekt boven een bepaalde kracht, zodat een grote vis vrij kan komen)
+Een boot met net achterzich overlaten varen (net is op willekeurige hoogte en verschijnt alleen als de vis klein genoeg is om hem goed te kunnen ontwijken)
+Een sidderaal die langs zwemt en dichtbijzijnde vissen electrodiceert (deze vissen krijgen kruisjes als de ogen en zullen zinken) (Zeer grote vissen kunnen tegen de stroom en zullen de vis kunnen eten)
+
+Balancing:
+Fish spawn rate, max aantal vissen en de grote van de vissen moet kloppen voor elke grote van de player
+
+Vis uiterlijk:
+Verschillende textures voor vissen
+Verschillende vormen vissen
+
+Gespiegelde vissen:
+Vissen die van rechts komen moeten ook de ogen aan de bovenkant hebben staan
