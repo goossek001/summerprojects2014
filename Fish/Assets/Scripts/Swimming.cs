@@ -25,9 +25,10 @@ abstract public class Swimming : MonoBehaviour {
 	}
 
 	public void GrowhPower(float deltaSize) {
-		turnPower += turnPower * Mathf.Pow (deltaSize, 3);
-		tailSwinPower += tailSwinPower * Mathf.Pow (deltaSize, 3);
-		swimPower += Mathf.Sign (deltaSize) * swimPower * Mathf.Pow (Mathf.Abs(deltaSize), 2.4f);
+		Debug.Log (deltaSize+", "+rigidbody2D.mass);
+		turnPower += Mathf.Sign(deltaSize) * turnPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.85f);
+		tailSwinPower += Mathf.Sign(deltaSize) * tailSwinPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.85f);
+		swimPower += Mathf.Sign (deltaSize) * swimPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.65f);
 	}
 
 	protected void Swim (float input) {

@@ -36,7 +36,7 @@ public class Biting : MonoBehaviour {
 		if (food != null) bloodEffect.Activate();
 
 		mouthOpener.RemoveFish (food);
-		Growh (food);
+		//Growh (food);
 		Destroy (food);
 		
 		spawn.AFishDied ();
@@ -57,11 +57,11 @@ public class Biting : MonoBehaviour {
 		localScale.y += deltaSize;
 		transform.localScale = localScale;
 		
-		rigidbody2D.mass += rigidbody2D.mass * Mathf.Pow (deltaSize, 2);
+		rigidbody2D.mass += Mathf.Sign(deltaSize) * rigidbody2D.mass * Mathf.Pow (deltaSize, 2);
 		for (int i = 0; i < transform.childCount; i++) {
 			Rigidbody2D childRigidbody = transform.GetChild(i).rigidbody2D;
 			if (childRigidbody != null) {
-				childRigidbody.mass += childRigidbody.mass * Mathf.Pow (deltaSize, 2);
+				childRigidbody.mass += Mathf.Sign(deltaSize) * childRigidbody.mass * Mathf.Pow (deltaSize, 2);
 			}
 		}
 

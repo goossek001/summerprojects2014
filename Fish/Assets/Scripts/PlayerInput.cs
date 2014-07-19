@@ -12,5 +12,6 @@ public class PlayerInput : Swimming {
 		if (input != 0) {
 			Swim(input);
 		}
+		//GetComponent<Biting> ().Growh (0.1f*Time.fixedDeltaTime);
 	}
 }
