@@ -17,16 +17,18 @@ public class ScreenSizeHandler : MonoBehaviour {
 
 		fishSpawnTrigger.localScale = new Vector3 (screenSize_x + 10, screenSize_y + 10, 0);
 
-		playerLeftBoundrie.localScale = new Vector3 (1, screenSize_y, 0);
-		playerLeftBoundrie.position = new Vector3 (-0.5f*screenSize_x, 0, 0);
+		float extraSize = 200; //To prevent a fish being partial outside the area when growing
+
+		playerLeftBoundrie.localScale = new Vector3 (extraSize, screenSize_y+extraSize, 0);
+		playerLeftBoundrie.position = new Vector3 (-0.5f*(screenSize_x+playerLeftBoundrie.localScale.x), 0, 0);
 		
-		playerRightBoundrie.localScale = new Vector3 (1, screenSize_y, 0);
-		playerRightBoundrie.position = new Vector3 (0.5f*screenSize_x, 0, 0);
+		playerRightBoundrie.localScale = new Vector3 (extraSize, screenSize_y+extraSize, 0);
+		playerRightBoundrie.position = new Vector3 (0.5f*(screenSize_x+playerRightBoundrie.localScale.x), 0, 0);
 		
-		playerUpBoundrie.localScale = new Vector3 (screenSize_x, 1, 0);
-		playerUpBoundrie.position = new Vector3 (0, 0.5f*screenSize_y, 0);
+		playerUpBoundrie.localScale = new Vector3 (screenSize_x, extraSize, 0);
+		playerUpBoundrie.position = new Vector3 (0, 0.5f*(screenSize_y+playerUpBoundrie.localScale.y), 0);
 		
-		playerDownBoundrie.localScale = new Vector3 (screenSize_x, 1, 0);
-		playerDownBoundrie.position = new Vector3 (0, -0.5f*screenSize_y, 0);
+		playerDownBoundrie.localScale = new Vector3 (screenSize_x, extraSize, 0);
+		playerDownBoundrie.position = new Vector3 (0, -0.5f*(screenSize_y+playerDownBoundrie.localScale.y), 0);
 	}
 }

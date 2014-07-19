@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BloodEffectGenerator : MonoBehaviour {
-
+public class SkinShredEffect : MonoBehaviour {
+	
 	public void Activate () {
 		ParticleSystem particleSystem = GetComponent<ParticleSystem> ();
 		particleSystem.emissionRate *= transform.localScale.y;

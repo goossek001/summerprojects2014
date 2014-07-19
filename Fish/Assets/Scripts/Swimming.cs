@@ -25,7 +25,6 @@ abstract public class Swimming : MonoBehaviour {
 	}
 
 	public void GrowhPower(float deltaSize) {
-		Debug.Log (deltaSize+", "+rigidbody2D.mass);
 		turnPower += Mathf.Sign(deltaSize) * turnPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.85f);
 		tailSwinPower += Mathf.Sign(deltaSize) * tailSwinPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.85f);
 		swimPower += Mathf.Sign (deltaSize) * swimPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.65f);
@@ -56,15 +55,9 @@ abstract public class Swimming : MonoBehaviour {
 	private static bool isJointFullyTurned (HingeJoint2D joint, int dirrection) {
 		bool isFullyTurned;
 		if (dirrection > 0) {
-			isFullyTurned = joint.jointAngle >= joint.limits.max*0.96f;
-			if (joint.jointAngle > joint.limits.max) {
-				//joint.jointAngle = joint.limits.max;
-			}
+			isFullyTurned = joint.jointAngle >= joint.limits.max*0.9f;
 		} else {
-			isFullyTurned = joint.jointAngle <= joint.limits.min*0.96f;
-			if (joint.jointAngle < joint.limits.min) {
-				//joint.jointAngle = joint.limits.max;
-			}
+			isFullyTurned = joint.jointAngle <= joint.limits.min*0.9f;
 		}
 		return isFullyTurned;
 	}

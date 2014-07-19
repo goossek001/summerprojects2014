@@ -7,11 +7,18 @@ public class Biting : MonoBehaviour {
 	private MouthOpening mouthOpener;
 	private Swimming movementScript;
 
+	public HingeJoint2D[] joints;
+
 	public float growhRate = 0.1f;
+	private float progress;
 
 	public void Start () {
 		spawn = Camera.main.GetComponentInChildren<SpawnHandler> ();
 		mouthOpener = GetComponentInChildren<MouthOpening> ();
+
+		progress = 0;
+		
+		progress = 0;
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision) {
@@ -32,21 +39,46 @@ public class Biting : MonoBehaviour {
 	}
 
 	private void Eat(GameObject food) {
-		BloodEffectGenerator bloodEffect = food.GetComponentInChildren<BloodEffectGenerator> ();
+		BloodEffect bloodEffect = food.GetComponentInChildren<BloodEffect> ();
 		if (food != null) bloodEffect.Activate();
-
-		mouthOpener.RemoveFish (food);
-		//Growh (food);
-		Destroy (food);
 		
 		spawn.AFishDied ();
+		mouthOpener.RemoveFish (food);
+		Growh (food);
+
+		Destroy (food);
 	}
 	
 	private void Growh (GameObject food) {
 		float deltaSize = growhRate * food.transform.localScale.y / transform.localScale.y;
-		Growh (deltaSize);
+		progress += deltaSize;
+
+		if (progress >= 1) {
+			progress--;
+
+			char[] seperators = {'('};
+			string prefabName = name.Split(seperators)[0];
+			GameObject prefab = (GameObject) Resources.Load(prefabName, typeof (GameObject));
+			
+			GameObject newFish = (GameObject) Instantiate(prefab, transform.position, transform.rotation);
+			newFish.GetComponent<Biting>().Growh (Mathf.Pow(transform.localScale.y, 1.1f));
+			newFish.rigidbody2D.velocity = rigidbody2D.velocity;
+			for (int i = 0; i < newFish.transform.childCount; i++) {
+				Transform child = newFish.transform.GetChild(i);
+				if (child.rigidbody2D != null) {
+					//!!!Warning - The velocity should come from the equal child of the parent object
+					child.rigidbody2D.velocity = rigidbody2D.velocity;
+				}
+			}
+			//!!!Warning - Missing code that add current torque to the new fish (also needed to childerens with rigidbody2d)
+
+			SkinShredEffect skinShred = GetComponentInChildren<SkinShredEffect> ();
+			if (skinShred != null) skinShred.Activate();
+			Destroy(gameObject);
+		}
 	}
 
+	//!!!Warning - Only use on init (when joints have a angle other that 0 this method will break the joint)
 	public void Growh (float deltaSize) {
 		if (movementScript == null) {
 			movementScript = GetComponent<Swimming> ();
