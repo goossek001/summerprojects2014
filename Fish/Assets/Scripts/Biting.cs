@@ -16,7 +16,7 @@ public class Biting : MonoBehaviour {
 		spawn = Camera.main.GetComponentInChildren<SpawnHandler> ();
 		mouthOpener = GetComponentInChildren<MouthOpening> ();
 
-		progress = 0;
+		progress = 0.99f;
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision) {

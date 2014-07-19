@@ -5,6 +5,8 @@ public class PlayerInput : Swimming {
 
 	public override void Start() {
 		base.Start ();
+
+		Camera.main.GetComponentInChildren<SpawnHandler> ().SetPlayer (gameObject);
 	}
 
 	public void FixedUpdate () {
