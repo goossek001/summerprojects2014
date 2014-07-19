@@ -52,7 +52,6 @@
      <Compile Include="Assets\Scripts\MouthOpening.cs" />
      <Compile Include="Assets\Scripts\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\ScreenSizeHandler.cs" />
-     <Compile Include="Assets\Scripts\SkinShredEffect.cs" />
      <Compile Include="Assets\Scripts\SpawnHandler.cs" />
      <Compile Include="Assets\Scripts\Swimming.cs" />
   </ItemGroup>

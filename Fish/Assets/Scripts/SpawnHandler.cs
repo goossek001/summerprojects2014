@@ -5,12 +5,14 @@ public class SpawnHandler: MonoBehaviour {
 	private float requiredNumberOfFish;
 	private int numberOfFish;
 
-	public GameObject fishPrefab;
+	private GameObject fishPrefab;
 
 	// Use this for initialization
 	public void Start () {
 		requiredNumberOfFish = 10;
 		numberOfFish = 1;
+
+		fishPrefab = (GameObject) Resources.Load("Fish", typeof (GameObject));
 	}
 	
 	// Update is called once per frame

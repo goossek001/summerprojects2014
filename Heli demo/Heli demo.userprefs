@@ -2,12 +2,7 @@
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="..\Fish\Assets\Scripts\Biting.cs">
     <Files>
-      <File FileName="..\Fish\Assets\Scripts\Biting.cs" Line="73" Column="85" />
-      <File FileName="..\Fish\Assets\Scripts\SpawnHandler.cs" Line="1" Column="1" />
-      <File FileName="..\Fish\Assets\Scripts\ScreenSizeHandler.cs" Line="31" Column="71" />
-      <File FileName="..\Fish\Assets\Scripts\Swimming.cs" Line="1" Column="1" />
-      <File FileName="..\Fish\Assets\Scripts\PlayerInput.cs" Line="1" Column="1" />
-      <File FileName="..\Fish\Assets\Scripts\MouthOpening.cs" Line="1" Column="1" />
+      <File FileName="..\Fish\Assets\Scripts\Biting.cs" Line="79" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

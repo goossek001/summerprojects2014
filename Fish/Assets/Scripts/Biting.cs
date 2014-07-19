@@ -78,9 +78,7 @@ public class Biting : MonoBehaviour {
 				}
 			}
 
-			SkinShredEffect skinShred = GetComponentInChildren<SkinShredEffect> ();
-			if (skinShred != null) skinShred.Activate();
-			Destroy(gameObject);
+			Destroy (gameObject);
 		}
 	}
 
