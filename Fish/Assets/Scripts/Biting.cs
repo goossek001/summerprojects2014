@@ -17,8 +17,6 @@ public class Biting : MonoBehaviour {
 		mouthOpener = GetComponentInChildren<MouthOpening> ();
 
 		progress = 0;
-		
-		progress = 0;
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision) {
@@ -64,13 +62,21 @@ public class Biting : MonoBehaviour {
 			newFish.GetComponent<Biting>().Growh (Mathf.Pow(transform.localScale.y, 1.1f));
 			newFish.rigidbody2D.velocity = rigidbody2D.velocity;
 			for (int i = 0; i < newFish.transform.childCount; i++) {
-				Transform child = newFish.transform.GetChild(i);
-				if (child.rigidbody2D != null) {
-					//!!!Warning - The velocity should come from the equal child of the parent object
-					child.rigidbody2D.velocity = rigidbody2D.velocity;
+				Transform newChild = newFish.transform.GetChild(i);
+				Transform oldChild = transform.GetChild(i);
+				if (newChild.rigidbody2D != null) {
+					oldChild = transform.GetChild(i);
+					if (oldChild.name != newChild.name) {
+						for (int j = 0; j < transform.childCount; j++) {
+							oldChild = transform.GetChild(j);
+							if (oldChild.name == newChild.name) {
+								break;
+							}
+						}
+					}
+					newChild.rigidbody2D.velocity = oldChild.rigidbody2D.velocity;
 				}
 			}
-			//!!!Warning - Missing code that add current torque to the new fish (also needed to childerens with rigidbody2d)
 
 			SkinShredEffect skinShred = GetComponentInChildren<SkinShredEffect> ();
 			if (skinShred != null) skinShred.Activate();
