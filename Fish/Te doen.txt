@@ -3,6 +3,7 @@ Te Doen:
 Hud:
 Een progress bar in de vorm van een maag die aan de speler laat zien hoeveel vis hij moet eten om te groeien
 Een score (aantal en soorten vissen gegeten) (Deze score word vervangen voor tijd wanneer het spel word uitgespeeld)
+Score animatie op de plaats waar een vis sterft
 
 AI:
 Als een vis een grotere vis in zijn zicht bereik heeft raakt hij in paniek en zwemt weg van het punt waar hij de grotere vis voor het laatst heeft gezien
@@ -29,3 +30,14 @@ Verschillende vormen vissen
 
 Gespiegelde vissen:
 Vissen die van rechts komen moeten ook de ogen aan de bovenkant hebben staan
+
+Geluid:
+Achtergrond geluid
+Zwem geluid voor speler, wanneer de vis van richting veranderd
+Eet/Hap geluid
+Groei geluid
+Overwinnings geluid
+Vis haak plonts
+Vishaak optrek geluid (van het katrol)
+Boot geluid
+Sideraal/stroom geluid
