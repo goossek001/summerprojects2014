@@ -16,7 +16,7 @@ public class Biting : MonoBehaviour {
 		spawn = Camera.main.GetComponentInChildren<SpawnHandler> ();
 		mouthOpener = GetComponentInChildren<MouthOpening> ();
 
-		progress = 0.99f;
+		progress = 0;
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision) {
@@ -59,7 +59,7 @@ public class Biting : MonoBehaviour {
 			GameObject prefab = (GameObject) Resources.Load(prefabName, typeof (GameObject));
 			
 			GameObject newFish = (GameObject) Instantiate(prefab, transform.position, transform.rotation);
-			newFish.GetComponent<Biting>().Growh (Mathf.Pow(transform.localScale.y, 1.1f));
+			newFish.GetComponent<Biting>().Growh (0.5f*Mathf.Pow(transform.localScale.y, 1.4f));
 			newFish.rigidbody2D.velocity = rigidbody2D.velocity;
 			for (int i = 0; i < newFish.transform.childCount; i++) {
 				Transform newChild = newFish.transform.GetChild(i);

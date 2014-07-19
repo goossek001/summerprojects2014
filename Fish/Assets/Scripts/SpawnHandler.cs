@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SpawnHandler: MonoBehaviour {
-	public float spawnRate = 1;
+	public float spawnRate = 0.75f;
 	public float maxNumberOfFish = 12;
 	private int numberOfFish;
 
@@ -17,12 +17,16 @@ public class SpawnHandler: MonoBehaviour {
 
 		fishPrefab = (GameObject) Resources.Load("Fish", typeof (GameObject));
 
-		fishSizes = new float[6];
+		fishSizes = new float[12];
 		fishSizes [0] = 0.7f;
 		fishSizes [1] = 1;
 		for (int i = 2; i < fishSizes.Length; i++) {
-			fishSizes [i] = 1 + Mathf.Pow (fishSizes [i-1], 1.1f);
+			fishSizes [i] = 1 + 0.5f*Mathf.Pow (fishSizes [i-1], 1.4f);
 		}
+
+		for (int i = 0; i < 3; i++) {
+			SpawnFish();
+        }
 	}
 
 	public void SetPlayer(GameObject playerObject) {
@@ -52,11 +56,21 @@ public class SpawnHandler: MonoBehaviour {
 		Vector2 position = (new Vector2 (transform.position.x + direction * (collider2D.bounds.max.x-1), (Random.value*2-1)*(collider2D.bounds.max.y - 10)));
 		int rotation = direction == -1? 0: 180;
 		GameObject fish = (GameObject) Instantiate(fishPrefab, (Vector3) position, Quaternion.Euler(0, 0, rotation));
-		
-		//!!!Warning - Temp code, should be replaced with a calculation that will less bigger fish spawn when the player is small
+
 		int playerSizeIndex = PlayerSizeIndex ();
-		int sizeIndex = (int) (Random.value * fishSizes.Length);
-		fish.GetComponent<Biting>().Growh(fishSizes[0]-1);
+		float randomValue = Random.value;
+		Debug.Log (randomValue);
+		int sizeIndex;
+		if (randomValue > 0.95 && playerSizeIndex + 3 < fishSizes.Length) {
+				sizeIndex = playerSizeIndex + 3;
+		} else if (randomValue > 0.85 && playerSizeIndex + 2 < fishSizes.Length) {
+				sizeIndex = playerSizeIndex + 2;
+		} else if (randomValue > 0.7 && playerSizeIndex + 1 < fishSizes.Length) {
+				sizeIndex = playerSizeIndex + 1;
+		} else {
+			sizeIndex = (int) (Random.value * Mathf.Min(fishSizes.Length, playerSizeIndex));
+		}
+		fish.GetComponent<Biting>().Growh(fishSizes[sizeIndex]-1);
 	}
 
 	public void AFishDied() {
