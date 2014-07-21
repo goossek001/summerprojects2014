@@ -72,17 +72,15 @@ public class SpawnHandler: MonoBehaviour {
 		fish.GetComponent<Biting>().Growh(fishSizes[sizeIndex]-1);
 	}
 
-	public void AFishDied() {
-		numberOfFish--;
-	}
-
 	public void OnTriggerExit2D(Collider2D leavingObject) {
 		if (leavingObject.transform.parent == null) {
 			if (leavingObject.gameObject.GetComponent<FishAI>() != null) {
-				AFishDied();
+				numberOfFish--;
 			}
 
-			Destroy (leavingObject.gameObject);
+			//Detroy the fish and let the trigger exit be called if the object is inside at trigger
+			leavingObject.transform.position += new Vector3 (10000, 10000, 0);
+			Destroy (leavingObject.gameObject, 3);
 		}
 	}
 }

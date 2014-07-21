@@ -22,7 +22,7 @@ public class MouthOpening : MonoBehaviour {
 		nearFish = new ArrayList (6);
 	}
 
-	public void RemoveFish(GameObject fish) {
+	private void RemoveFish(GameObject fish) {
 		nearFish.Remove (fish);
 		
 		if (nearFish.Count == 0) {

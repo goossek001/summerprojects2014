@@ -39,12 +39,12 @@ public class Biting : MonoBehaviour {
 	private void Eat(GameObject food) {
 		BloodEffect bloodEffect = food.GetComponentInChildren<BloodEffect> ();
 		if (food != null) bloodEffect.Activate();
-		
-		spawn.AFishDied ();
-		mouthOpener.RemoveFish (food);
+
 		Growh (food);
 
-		Destroy (food);
+		//Detroy the fish and let the trigger exit be called if the object is inside at trigger
+		food.transform.position += new Vector3 (10000, 10000, 0);
+		Destroy (food, 3);
 	}
 	
 	private void Growh (GameObject food) {

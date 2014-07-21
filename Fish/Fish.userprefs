@@ -1,13 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Swimming.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BloodEffect.cs">
     <Files>
-      <File FileName="Assets\Scripts\Biting.cs" Line="19" Column="15" />
-      <File FileName="Assets\Scripts\SpawnHandler.cs" Line="71" Column="47" />
-      <File FileName="Assets\Scripts\PlayerInput.cs" Line="9" Column="78" />
+      <File FileName="Assets\Scripts\BloodEffect.cs" Line="8" Column="81" />
+      <File FileName="Assets\Scripts\Biting.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SpawnHandler.cs" Line="61" Column="36" />
+      <File FileName="Assets\Scripts\PlayerInput.cs" Line="8" Column="36" />
       <File FileName="Assets\Scripts\FishAI.cs" Line="12" Column="22" />
       <File FileName="Assets\Scripts\ScreenSizeHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Swimming.cs" Line="35" Column="44" />
+      <File FileName="Assets\Scripts\Swimming.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MouthOpening.cs" Line="23" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,8 +1,5 @@
 Te Doen:
 
-Bugs:
-Als een vis binnen jou bereik word opgegeten door een andere vis, blijft je mond open staan
-
 Hud:
 Een progress bar in de vorm van een maag die aan de speler laat zien hoeveel vis hij moet eten om te groeien
 Een score (aantal en soorten vissen gegeten) (Deze score word vervangen voor tijd wanneer het spel word uitgespeeld)
