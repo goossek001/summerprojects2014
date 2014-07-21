@@ -59,7 +59,6 @@ public class SpawnHandler: MonoBehaviour {
 
 		int playerSizeIndex = PlayerSizeIndex ();
 		float randomValue = Random.value;
-		Debug.Log (randomValue);
 		int sizeIndex;
 		if (randomValue > 0.95 && playerSizeIndex + 3 < fishSizes.Length) {
 				sizeIndex = playerSizeIndex + 3;

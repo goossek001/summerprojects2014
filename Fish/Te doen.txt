@@ -1,5 +1,8 @@
 Te Doen:
 
+Bugs:
+Als een vis binnen jou bereik word opgegeten door een andere vis, blijft je mond open staan
+
 Hud:
 Een progress bar in de vorm van een maag die aan de speler laat zien hoeveel vis hij moet eten om te groeien
 Een score (aantal en soorten vissen gegeten) (Deze score word vervangen voor tijd wanneer het spel word uitgespeeld)
@@ -12,6 +15,7 @@ Als een vis niet word afgeleid zemt hij in een rechte lijn van of, van links naa
 
 Eind scene:
 Als je vis het volledige scherm in beslag neem, zoom je langzaam uit en zie je je vis in meer die wat kleiner is dan hem zelf en laat hij een boer
+Verloren/opgegeten spel
 
 Achtergrond:
 Een waterachtergrond animatie

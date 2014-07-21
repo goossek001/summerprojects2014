@@ -36,7 +36,7 @@ public class MouthOpening : MonoBehaviour {
 			other = other.transform.parent;
 		}
 		
-		if (other != null) {
+		if (other != null && nearFish != null) {
 			if (transform.parent.localScale.y > other.transform.localScale.y) {
 				if (!nearFish.Contains(other.gameObject)) {
 					nearFish.Add(other.gameObject);
