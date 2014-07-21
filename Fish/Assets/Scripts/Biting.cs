@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Biting : MonoBehaviour {
 
-	private SpawnHandler spawn;
-	private MouthOpening mouthOpener;
 	private Swimming movementScript;
 
 	public HingeJoint2D[] joints;
@@ -13,9 +11,6 @@ public class Biting : MonoBehaviour {
 	private float progress;
 
 	public void Start () {
-		spawn = Camera.main.GetComponentInChildren<SpawnHandler> ();
-		mouthOpener = GetComponentInChildren<MouthOpening> ();
-
 		progress = 0;
 	}
 
