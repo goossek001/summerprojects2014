@@ -1,6 +1,13 @@
 fileFormatVersion: 2
 guid: 7990501e301dcf74a83f13ad2744949c
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Head
+    21300002: Tail1
+    21300004: Tail2
+    21300006: Tail3
+    21300008: Tail4
+    21300010: Fish_OpenMouth
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

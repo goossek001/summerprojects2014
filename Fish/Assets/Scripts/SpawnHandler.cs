@@ -79,7 +79,7 @@ public class SpawnHandler: MonoBehaviour {
 			}
 
 			//Detroy the fish and let the trigger exit be called if the object is inside at trigger
-			leavingObject.transform.position += new Vector3 (10000, 10000, 0);
+			leavingObject.transform.position += (Vector3) new Vector2 (10000, 10000);
 			Destroy (leavingObject.gameObject, 3);
 		}
 	}

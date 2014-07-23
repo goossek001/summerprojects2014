@@ -9,9 +9,12 @@ public class Biting : MonoBehaviour {
 
 	public float growhRate = 0.1f;
 	private float progress;
+	private ProgressBar progressBar;
 
 	public void Start () {
 		progress = 0;
+
+		progressBar = GetComponent<ProgressBar> ();
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision) {
@@ -38,7 +41,7 @@ public class Biting : MonoBehaviour {
 		Growh (food);
 
 		//Detroy the fish and let the trigger exit be called if the object is inside at trigger
-		food.transform.position += new Vector3 (10000, 10000, 0);
+		food.transform.position += (Vector3) new Vector2 (10000, 10000);
 		Destroy (food, 3);
 	}
 	
@@ -74,6 +77,8 @@ public class Biting : MonoBehaviour {
 			}
 
 			Destroy (gameObject);
+		} else {
+			if (progressBar != null) progressBar.SetSize (progress);
 		}
 	}
 
