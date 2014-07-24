@@ -31,14 +31,15 @@ public class ProgressBar : MonoBehaviour {
 
 	// Use this for initialization
 	public void OnGUI () {  
+		float uglyEdgeRemoveAmount = 0.02f;
+
 		GUI.BeginGroup (new Rect (position.x, position.y, size.x, size.y));
 			GUI.BeginGroup (new Rect (contentOffset.x, contentOffset.y + (1 - progress) * contentSize.y, contentSize.x, progress * contentSize.y));
-				GUI.DrawTexture (new Rect (0,-(1 - progress) * contentSize.y, contentSize.x, contentSize.y), content);
+		GUI.DrawTexture (new Rect (-uglyEdgeRemoveAmount*contentSize.x, -(uglyEdgeRemoveAmount + 1 - progress) * contentSize.y, contentSize.x * (1 + 2*uglyEdgeRemoveAmount), contentSize.y * (1 + 2*uglyEdgeRemoveAmount)), content);
 			GUI.EndGroup ();
 
-			GUI.DrawTexture (new Rect (0, 0, size.x, size.y), contour);
+		GUI.DrawTexture (new Rect (-uglyEdgeRemoveAmount*size.x, -uglyEdgeRemoveAmount*size.x, size.x * (1 + 2*uglyEdgeRemoveAmount), size.y * (1 + 2*uglyEdgeRemoveAmount)), contour);
 		GUI.EndGroup ();
-
 	}
 	
 	// Update is called once per frame

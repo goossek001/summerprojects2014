@@ -1,9 +1,8 @@
 Te Doen:
 
 Hud:
-Een progress bar in de vorm van een maag die aan de speler laat zien hoeveel vis hij moet eten om te groeien
 Een score (aantal en soorten vissen gegeten) (Deze score word vervangen voor tijd wanneer het spel word uitgespeeld)
-Score animatie op de plaats waar een vis sterft
+Een score op de plaats waar een vis sterft
 
 AI:
 Als een vis een grotere vis in zijn zicht bereik heeft raakt hij in paniek en zwemt weg van het punt waar hij de grotere vis voor het laatst heeft gezien

@@ -76,7 +76,9 @@ public class Biting : MonoBehaviour {
 				}
 			}
 
-			Destroy (gameObject);
+			//Detroy the fish and let the trigger exit be called if the object is inside at trigger
+			gameObject.transform.position += (Vector3) new Vector2 (10000, 10000);
+			Destroy (gameObject, 3);
 		} else {
 			if (progressBar != null) progressBar.SetSize (progress);
 		}
