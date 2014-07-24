@@ -42,7 +42,7 @@ public class Biting : MonoBehaviour {
 
 		//Detroy the fish and let the trigger exit be called if the object is inside at trigger
 		food.transform.position += (Vector3) new Vector2 (10000, 10000);
-		Destroy (food, 6);
+		Destroy (food, 5);
 	}
 	
 	private void Growh (GameObject food) {
@@ -79,7 +79,7 @@ public class Biting : MonoBehaviour {
 
 			//Detroy the fish and let the trigger exit be called if the object is inside at trigger
 			gameObject.transform.position += (Vector3) new Vector2 (10000, 10000);
-			Destroy (gameObject, 6);
+			Destroy (gameObject, 5);
 		} else {
 			if (progressBar != null) progressBar.SetSize (progress);
 		}

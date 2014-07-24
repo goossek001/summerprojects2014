@@ -1,13 +1,14 @@
 Te Doen:
 
+Bugs:
+Soms blijft de mond los staan na het eten van een vis
+
 Hud:
 Een score (aantal en soorten vissen gegeten) (Deze score word vervangen voor tijd wanneer het spel word uitgespeeld)
 Een score op de plaats waar een vis sterft
 
 AI:
-Als een vis een grotere vis in zijn zicht bereik heeft raakt hij in paniek en zwemt weg van het punt waar hij de grotere vis voor het laatst heeft gezien
-Als een vis niet word opgejaagd en een kleinere vis ziet gaat hij op jacht naar deze vis, totdat hij de vis een tijdje niet ziet, hij word afgeleid door een kleinere vis of totdat de andere vis groter dan hem is
-Als een vis niet word afgeleid zemt hij in een rechte lijn van of, van links naar rechts of van rechts naar links.
+Valt nog te verbeteren
 
 Eind scene:
 Als je vis het volledige scherm in beslag neem, zoom je langzaam uit en zie je je vis in meer die wat kleiner is dan hem zelf en laat hij een boer

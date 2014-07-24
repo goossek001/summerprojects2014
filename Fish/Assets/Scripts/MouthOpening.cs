@@ -35,13 +35,17 @@ public class MouthOpening : MonoBehaviour {
 		spriteRenderer.sprite = scaredFace;
 	}
 	
+	public void Relax() {
+		spriteRenderer.sprite = (nearFish.Count == 0? closedMouth: openMouth);
+	}
+	
 	public void OnTriggerEnter2D(Collider2D collider) {
 		Transform other = collider.transform;
-		while (other != null && other.tag != "Fish") {
+		while (other != null && (other.tag != "Fish" && other.tag != "Player")) {
 			other = other.transform.parent;
 		}
-		
-		if (other != null && nearFish != null) {
+	
+		if (other != null && nearFish != null && (transform.parent.tag == "Player" || other.tag == "Player")) {
 			if (transform.parent.localScale.y > other.transform.localScale.y) {
 				if (!nearFish.Contains(other.gameObject)) {
 					nearFish.Add(other.gameObject);
@@ -60,11 +64,11 @@ public class MouthOpening : MonoBehaviour {
 	
 	public void OnTriggerExit2D(Collider2D collider) {
 		Transform other = collider.transform;
-		while (other != null && other.tag != "Fish") {
+		while (other != null &&  (other.tag != "Fish" && other.tag != "Player")) {
 			other = other.transform.parent;
 		}
 		
-		if (other != null) {
+		if (other != null && (transform.parent.tag == "Player" || other.tag == "Player")) {
 			if (nearFish.Contains(other.gameObject)) {
 				RemoveFish(other.gameObject);
 			}

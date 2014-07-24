@@ -6,6 +6,7 @@ public class ProgressBar : MonoBehaviour {
 
 	public Texture2D content;
 	public Texture2D contour;
+	public Texture2D background;
 	
 	public Vector2 position;
 	public Vector2 size;
@@ -34,11 +35,13 @@ public class ProgressBar : MonoBehaviour {
 		float uglyEdgeRemoveAmount = 0.02f;
 
 		GUI.BeginGroup (new Rect (position.x, position.y, size.x, size.y));
+			GUI.DrawTexture (new Rect (-uglyEdgeRemoveAmount*size.x, -uglyEdgeRemoveAmount*size.x, size.x * (1 + 2*uglyEdgeRemoveAmount), size.y * (1 + 2*uglyEdgeRemoveAmount)), background);
+			
 			GUI.BeginGroup (new Rect (contentOffset.x, contentOffset.y + (1 - progress) * contentSize.y, contentSize.x, progress * contentSize.y));
-		GUI.DrawTexture (new Rect (-uglyEdgeRemoveAmount*contentSize.x, -(uglyEdgeRemoveAmount + 1 - progress) * contentSize.y, contentSize.x * (1 + 2*uglyEdgeRemoveAmount), contentSize.y * (1 + 2*uglyEdgeRemoveAmount)), content);
+				GUI.DrawTexture (new Rect (-uglyEdgeRemoveAmount*contentSize.x, -(uglyEdgeRemoveAmount + 1 - progress) * contentSize.y, contentSize.x * (1 + 2*uglyEdgeRemoveAmount), contentSize.y * (1 + 2*uglyEdgeRemoveAmount)), content);
 			GUI.EndGroup ();
 
-		GUI.DrawTexture (new Rect (-uglyEdgeRemoveAmount*size.x, -uglyEdgeRemoveAmount*size.x, size.x * (1 + 2*uglyEdgeRemoveAmount), size.y * (1 + 2*uglyEdgeRemoveAmount)), contour);
+			GUI.DrawTexture (new Rect (-uglyEdgeRemoveAmount*size.x, -uglyEdgeRemoveAmount*size.x, size.x * (1 + 2*uglyEdgeRemoveAmount), size.y * (1 + 2*uglyEdgeRemoveAmount)), contour);
 		GUI.EndGroup ();
 	}
 	

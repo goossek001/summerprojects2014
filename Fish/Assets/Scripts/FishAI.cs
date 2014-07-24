@@ -18,7 +18,7 @@ public class FishAI : Swimming {
 		base.Start ();
 
 		Vector2 goal = new Vector2 (-transform.position.x, transform.position.y);
-		state = new WanderState (goal);
+		state = new WanderState (goal, this);
 		turnTimer = turnDelay;
 
 		adrialineActiveted = false;
@@ -33,7 +33,15 @@ public class FishAI : Swimming {
 
 			rigidbody2D.velocity = Vector2.zero;
 		}
-
+	}
+	
+	public void DeActiveteAdrialine() {
+		if (adrialineActiveted) {
+			adrialineActiveted = false;
+			
+			turnPower /= 2f;
+			turnDelay /= 0.4f;
+		}
 	}
 	
 	// Update is called once per frame
@@ -79,8 +87,17 @@ public class WanderState: State {
 
 	private Vector2 goal;
 
-	public WanderState(Vector2 goal) {
+	public WanderState(Vector2 goal, FishAI handler) {
 		this.goal = goal;
+
+		handler.DeActiveteAdrialine ();
+	}
+	
+	public WanderState(FishAI handler) {
+		float rotation = (handler.transform.eulerAngles.z+360) % 360;
+		this.goal = new Vector2((rotation < 90 || rotation > 270)? 1000: -1000, handler.transform.position.y);
+
+		handler.DeActiveteAdrialine ();
 	}
 	
 	Vector2 State.findNextGoal (FishAI handler) {
@@ -89,7 +106,7 @@ public class WanderState: State {
 
 	void State.FishLocated (FishAI handler, GameObject newFish) {
 		if (newFish.transform.localScale.y < handler.transform.localScale.y) {
-			handler.ChangeState(new ChaseState());
+			handler.ChangeState(new ChaseState(newFish, handler));
 		} else if (newFish.transform.localScale.y > handler.transform.localScale.y) {
 			handler.ChangeState(new FleeState(newFish, handler));
 		}
@@ -102,23 +119,59 @@ public class WanderState: State {
 public class ChaseState: State {
 
 	private GameObject pray;
+	private bool isPrayInSight;
 	private Vector2 lastKnownPosition;
-	private float timePast;
+
+	private float maxBlindChaseTime;
+	private float chaseTimeLeft;
+
+	public ChaseState(GameObject pray, FishAI handler) {
+		this.pray = pray;
+		lastKnownPosition = pray.transform.position;
+		isPrayInSight = true;
+
+		maxBlindChaseTime = 3;
+		chaseTimeLeft = maxBlindChaseTime;
+
+		handler.ActiveteAdrialine ();
+	}
 	
 	Vector2 State.findNextGoal (FishAI handler) {
-		return (Vector2) pray.transform.position;
+		if (isPrayInSight) {
+			if (pray != null) {
+				lastKnownPosition = pray.transform.position;
+			} else {
+				handler.ChangeState(new WanderState(handler));
+			}
+		} else {
+			chaseTimeLeft -= Time.fixedDeltaTime;
+
+			if (chaseTimeLeft <= 0 || (lastKnownPosition - (Vector2) handler.transform.position).magnitude < 0.75f) {
+				handler.ChangeState(new WanderState(handler));
+			}
+		} 
+
+		return lastKnownPosition;
 	}
 	
 	void State.FishLocated (FishAI handler, GameObject newFish) {
 		if (newFish.transform.localScale.y < handler.transform.localScale.y) {
-			handler.ChangeState(new ChaseState());
+			if (isPrayInSight) {
+				isPrayInSight = true;
+			} else {
+				handler.ChangeState(new ChaseState(newFish, handler));
+			}
 		} else if (newFish.transform.localScale.y > handler.transform.localScale.y) {
 			handler.ChangeState(new FleeState(newFish, handler));
 		}
 	}
 
 	void State.FishLost (FishAI handler, GameObject lostFish) {
+		if (lostFish == pray) {
+			isPrayInSight = false;
 
+			chaseTimeLeft = maxBlindChaseTime;
+		}
 	}
 }
 
@@ -128,18 +181,26 @@ public class FleeState: State {
 	private bool isHunterInSight;
 	private Vector2 lastKnownPosition;
 
+	private MouthOpening mouthOpening;
+
 	public FleeState (GameObject hunter, FishAI handler) {
 		this.hunter = hunter;
 		lastKnownPosition = hunter.transform.position;
 		isHunterInSight = true;
 
 		handler.ActiveteAdrialine ();
-		handler.GetComponentInChildren <MouthOpening> ().Scare ();
+		mouthOpening = handler.GetComponentInChildren <MouthOpening> ();
+		mouthOpening.Scare ();
 	}
 
 	Vector2 State.findNextGoal (FishAI handler) {
 		if (isHunterInSight && hunter != null) {
 			lastKnownPosition = hunter.transform.position;
+		}
+
+		if (hunter != null && ((Vector2)handler.transform.position - (Vector2) hunter.transform.position).magnitude > Camera.main.orthographicSize * 0.75f) {
+			mouthOpening.Relax();
+			handler.ChangeState(new WanderState(handler));
 		}
 
 		return (Vector2) handler.transform.position * 2 - lastKnownPosition;
