@@ -8,6 +8,7 @@ TextureImporter:
     21300006: Tail3
     21300008: Tail4
     21300010: Fish_OpenMouth
+    21300012: ScaredFace
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -103,6 +104,16 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 18
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ScaredFace
+      rect:
+        serializedVersion: 2
+        x: 27
         y: 0
         width: 8
         height: 8

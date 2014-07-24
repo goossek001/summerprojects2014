@@ -36,13 +36,13 @@ public class Biting : MonoBehaviour {
 
 	private void Eat(GameObject food) {
 		BloodEffect bloodEffect = food.GetComponentInChildren<BloodEffect> ();
-		if (food != null) bloodEffect.Activate();
+		if (bloodEffect != null) bloodEffect.Activate();
 
 		Growh (food);
 
 		//Detroy the fish and let the trigger exit be called if the object is inside at trigger
 		food.transform.position += (Vector3) new Vector2 (10000, 10000);
-		Destroy (food, 3);
+		Destroy (food, 6);
 	}
 	
 	private void Growh (GameObject food) {
@@ -50,7 +50,8 @@ public class Biting : MonoBehaviour {
 		progress += deltaSize;
 
 		if (progress >= 1) {
-			progress--;
+			progress = 0;
+			progressBar.SetSize (progress);
 
 			char[] seperators = {'('};
 			string prefabName = name.Split(seperators)[0];
@@ -78,7 +79,7 @@ public class Biting : MonoBehaviour {
 
 			//Detroy the fish and let the trigger exit be called if the object is inside at trigger
 			gameObject.transform.position += (Vector3) new Vector2 (10000, 10000);
-			Destroy (gameObject, 3);
+			Destroy (gameObject, 6);
 		} else {
 			if (progressBar != null) progressBar.SetSize (progress);
 		}

@@ -10,7 +10,7 @@ abstract public class Swimming : MonoBehaviour {
 
 	//The swimming propeties
 	public float turnPower = 10;
-	public float tailSwinPower = 0.2f;
+	public float tailSwingPower = 0.2f;
 	public float swimPower = 0.04f;
 
 	private HingeJoint2D[] joints;
@@ -26,17 +26,17 @@ abstract public class Swimming : MonoBehaviour {
 
 	public void GrowhPower(float deltaSize) {
 		turnPower += Mathf.Sign(deltaSize) * turnPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.85f);
-		tailSwinPower += Mathf.Sign(deltaSize) * tailSwinPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.85f);
+		tailSwingPower += Mathf.Sign(deltaSize) * tailSwingPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.85f);
 		swimPower += Mathf.Sign (deltaSize) * swimPower * (Mathf.Pow (deltaSize, 2)*tail.Length*0.65f);
 	}
 
 	protected void Swim (float input) {
 		try {
-			float tailSwing = input * tailSwinPower;
+			float tailSwing = input * tailSwingPower;
 			for (int i = 0; i < tail.Length; i++) {
 				tail [i].rigidbody2D.AddTorque (tailSwing);
 			}
-			body.rigidbody2D.AddTorque (-(tailSwing*tailSwinPower * tail.Length + input * turnPower));
+			body.rigidbody2D.AddTorque (-(tailSwing*tailSwingPower * tail.Length + input * turnPower));
 
 			float swimPower = 0;
 			for (int i = 0; i < joints.Length; i++) {
@@ -49,7 +49,6 @@ abstract public class Swimming : MonoBehaviour {
 		} catch (System.Exception) {
 			//The fish is destroyed
 		}
-		
 	}
 
 	private static bool isJointFullyTurned (HingeJoint2D joint, int dirrection) {

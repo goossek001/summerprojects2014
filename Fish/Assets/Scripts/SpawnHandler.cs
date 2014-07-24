@@ -24,7 +24,7 @@ public class SpawnHandler: MonoBehaviour {
 			fishSizes [i] = 1 + 0.5f*Mathf.Pow (fishSizes [i-1], 1.4f);
 		}
 
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < numberOfFish/4; i++) {
 			SpawnFish();
         }
 	}
@@ -80,7 +80,7 @@ public class SpawnHandler: MonoBehaviour {
 
 			//Detroy the fish and let the trigger exit be called if the object is inside at trigger
 			leavingObject.transform.position += (Vector3) new Vector2 (10000, 10000);
-			Destroy (leavingObject.gameObject, 3);
+			Destroy (leavingObject.gameObject, 6);
 		}
 	}
 }

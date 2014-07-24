@@ -21,9 +21,6 @@ Een haak met worm naar naar een willekeurige hoogte laten zakken, deze gaat weer
 Een boot met net achterzich overlaten varen (net is op willekeurige hoogte en verschijnt alleen als de vis klein genoeg is om hem goed te kunnen ontwijken)
 Een sidderaal die langs zwemt en dichtbijzijnde vissen electrodiceert (deze vissen krijgen kruisjes als de ogen en zullen zinken) (Zeer grote vissen kunnen tegen de stroom en zullen de vis kunnen eten)
 
-Balancing:
-Fish spawn rate, max aantal vissen en de grote van de vissen moet kloppen voor elke grote van de player
-
 Vis uiterlijk:
 Verschillende textures voor vissen
 Verschillende vormen vissen
@@ -41,3 +38,6 @@ Vis haak plonts
 Vishaak optrek geluid (van het katrol)
 Boot geluid
 Sideraal/stroom geluid
+
+Balancing:
+Fish spawn rate, max aantal vissen en de grote van de vissen moet kloppen voor elke grote van de player

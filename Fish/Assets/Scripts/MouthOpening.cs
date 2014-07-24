@@ -7,6 +7,7 @@ public class MouthOpening : MonoBehaviour {
 	
 	private Sprite closedMouth;
 	public Sprite openMouth;
+	public Sprite scaredFace;
 
 	private FishAI ai;
 
@@ -25,9 +26,13 @@ public class MouthOpening : MonoBehaviour {
 	private void RemoveFish(GameObject fish) {
 		nearFish.Remove (fish);
 		
-		if (nearFish.Count == 0) {
+		if (nearFish.Count == 0 && spriteRenderer.sprite != scaredFace) {
 			spriteRenderer.sprite = closedMouth;
 		}
+	}
+
+	public void Scare() {
+		spriteRenderer.sprite = scaredFace;
 	}
 	
 	public void OnTriggerEnter2D(Collider2D collider) {
@@ -41,7 +46,7 @@ public class MouthOpening : MonoBehaviour {
 				if (!nearFish.Contains(other.gameObject)) {
 					nearFish.Add(other.gameObject);
 					
-					if (nearFish.Count == 1) {
+					if (nearFish.Count == 1 && spriteRenderer.sprite != scaredFace) {
 						spriteRenderer.sprite = openMouth;
 					}
 				}
