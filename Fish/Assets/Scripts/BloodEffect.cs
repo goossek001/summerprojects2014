@@ -8,6 +8,7 @@ public class BloodEffect : MonoBehaviour {
 		particleSystem.emissionRate *= Mathf.Pow(transform.parent.localScale.y, 1.2f);
 		particleSystem.Play ();
 		transform.parent = null;
+
 		Destroy(gameObject, particleSystem.startLifetime + particleSystem.duration);
 	}
 }
