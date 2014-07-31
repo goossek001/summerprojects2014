@@ -25,6 +25,7 @@ public class FloatingScore: MonoBehaviour{
 
 			SpriteRenderer renderer = numbers[i].AddComponent<SpriteRenderer>();
 			renderer.sprite = numberSprites[(int)((score / Mathf.Pow(10, i)) % 10)];
+			renderer.sortingOrder = 1;
 		}
 	}
 	
