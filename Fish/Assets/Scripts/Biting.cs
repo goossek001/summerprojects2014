@@ -19,7 +19,7 @@ public class Biting : MonoBehaviour {
 
 	public void OnCollisionEnter2D(Collision2D collision) {
 		Transform other = collision.transform;
-		while (other != null && other.tag != "Fish") {
+		while (other != null && (other.tag != "Fish" && other.tag != "Player")) {
 			other = other.transform.parent;
 		}
 		if (other != null) {
@@ -45,6 +45,9 @@ public class Biting : MonoBehaviour {
 			
 			GameObject floatingScore = (GameObject) Instantiate(Resources.Load("FloatingScore", typeof (GameObject)), food.transform.position, Quaternion.identity);
 			floatingScore.GetComponent<FloatingScore>().Init(score);
+		} else if (food.tag == "Player") {
+			//Game Over
+			//!!!Missing code to let player know that he died and missing code to restart the game
 		}
 
 		Growh (food);
