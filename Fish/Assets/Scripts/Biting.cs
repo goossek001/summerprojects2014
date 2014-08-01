@@ -11,7 +11,7 @@ public class Biting : MonoBehaviour {
 	private float progress;
 	private ProgressBar progressBar;
 
-	public void Start () {
+	public virtual void Start () {
 		progress = 0;
 
 		progressBar = GetComponent<ProgressBar> ();
@@ -34,18 +34,11 @@ public class Biting : MonoBehaviour {
 		}
 	}
 
-	private void Eat(GameObject food) {
+	protected virtual void Eat(GameObject food) {
 		BloodEffect bloodEffect = food.GetComponentInChildren<BloodEffect> ();
 		if (bloodEffect != null) bloodEffect.Activate();
 		
-		if (tag == "Player") {
-			int score = (int)food.transform.localScale.y;
-			if (score == 0) score = 75;
-			else score *= 100;
-			
-			GameObject floatingScore = (GameObject) Instantiate(Resources.Load("FloatingScore", typeof (GameObject)), food.transform.position, Quaternion.identity);
-			floatingScore.GetComponent<FloatingScore>().Init(score);
-		} else if (food.tag == "Player") {
+		if (food.tag == "Player") {
 			//Game Over
 			//!!!Missing code to let player know that he died and missing code to restart the game
 		}

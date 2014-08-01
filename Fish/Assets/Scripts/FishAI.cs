@@ -3,8 +3,6 @@ using System.Collections;
 
 public class FishAI : Swimming {
 
-	public Collider2D sightArea;
-
 	public float turnDelay = 0.5f;
 	private float turnTimer;
 	private int swimDirection;
@@ -130,7 +128,7 @@ public class ChaseState: State {
 		lastKnownPosition = pray.transform.position;
 		isPrayInSight = true;
 
-		maxBlindChaseTime = 3;
+		maxBlindChaseTime = 0.5f;
 		chaseTimeLeft = maxBlindChaseTime;
 
 		handler.ActiveteAdrialine ();

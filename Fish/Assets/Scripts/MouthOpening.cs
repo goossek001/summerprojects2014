@@ -25,7 +25,8 @@ public class MouthOpening : MonoBehaviour {
 
 	private void RemoveFish(GameObject fish) {
 		nearFish.Remove (fish);
-		
+		nearFish.Remove (null); 	//!!!Bad bug fix, somethimes OnTriggerExit doesnt call before fish destruction. This code will remove those fish.
+
 		if (nearFish.Count == 0 && spriteRenderer.sprite != scaredFace) {
 			spriteRenderer.sprite = closedMouth;
 		}

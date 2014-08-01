@@ -51,8 +51,10 @@
      <Compile Include="Assets\Scripts\FishAI.cs" />
      <Compile Include="Assets\Scripts\FloatingScore.cs" />
      <Compile Include="Assets\Scripts\MouthOpening.cs" />
+     <Compile Include="Assets\Scripts\PlayerBiting.cs" />
      <Compile Include="Assets\Scripts\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\ProgressBar.cs" />
+     <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\ScreenSizeHandler.cs" />
      <Compile Include="Assets\Scripts\SpawnHandler.cs" />
      <Compile Include="Assets\Scripts\Swimming.cs" />
