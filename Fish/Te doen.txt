@@ -2,6 +2,7 @@ Te Doen:
 
 Hud:
 score vervangen voor tijd wanneer het spel word uitgespeeld
+Highscore
 
 AI:
 Valt nog te verbeteren

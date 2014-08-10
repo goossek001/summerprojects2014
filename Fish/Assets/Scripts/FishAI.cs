@@ -20,6 +20,18 @@ public class FishAI : Swimming {
 		turnTimer = turnDelay;
 
 		adrialineActiveted = false;
+		
+		float red = Random.value * 0.1f;
+		float green = Random.value * 0.1f;
+		float blue = Random.value * 0.1f;
+		
+		Color skinColor = new Color (red, green, blue);
+		SpriteRenderer[] tailRenderers = GetComponentsInChildren<SpriteRenderer> ();
+		
+		((SpriteRenderer)renderer).color = skinColor;
+		foreach (SpriteRenderer tailRenderer in tailRenderers) {
+			tailRenderer.color = skinColor;
+		}
 	}
 
 	public void ActiveteAdrialine() {

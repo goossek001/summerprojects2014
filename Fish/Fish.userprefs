@@ -1,19 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SpotLight.cs">
     <Files>
-      <File FileName="Assets\Scripts\FloatingScore.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerBiting.cs" Line="6" Column="27" />
-      <File FileName="Assets\Scripts\Biting.cs" Line="43" Column="30" />
-      <File FileName="Assets\Scripts\FishAI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SpotLight.cs" Line="14" Column="4" />
+      <File FileName="Assets\Scripts\FishAI.cs" Line="26" Column="34" />
       <File FileName="Assets\Scripts\BloodEffect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SpawnHandler.cs" Line="43" Column="24" />
-      <File FileName="Assets\Scripts\Swimming.cs" Line="9" Column="27" />
+      <File FileName="Assets\Scripts\SpawnHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Swimming.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ProgressBar.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Score.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScreenSizeHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MouthOpening.cs" Line="44" Column="45" />
-      <File FileName="Assets\Scripts\PlayerInput.cs" Line="9" Column="78" />
+      <File FileName="Assets\Scripts\MouthOpening.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerInput.cs" Line="1" Column="1" />
+      <File FileName="k:\Documents\C++\summerprojects2014\Fish\Assets\Scripts\Biting.cs" Line="59" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
