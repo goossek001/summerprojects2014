@@ -40,6 +40,10 @@ public class SpawnHandler: MonoBehaviour {
 		}
 	}
 
+	public void DestoyFish() {
+		numberOfFish--;
+	}
+
 	public int PlayerSizeIndex() {
 		int i = 0;
 

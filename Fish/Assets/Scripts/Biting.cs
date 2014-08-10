@@ -10,6 +10,7 @@ public class Biting : MonoBehaviour {
 	public float growhRate = 0.1f;
 	private float progress;
 	private ProgressBar progressBar;
+	private SpawnHandler spawnHandler;
 
 	public virtual void Start () {
 		progress = 0;
@@ -37,6 +38,9 @@ public class Biting : MonoBehaviour {
 	protected virtual void Eat(GameObject food) {
 		BloodEffect bloodEffect = food.GetComponentInChildren<BloodEffect> ();
 		if (bloodEffect != null) bloodEffect.Activate();
+
+		if (spawnHandler == null) spawnHandler = Camera.main.GetComponentInChildren<SpawnHandler>();
+		spawnHandler.DestoyFish ();
 		
 		if (food.tag == "Player") {
 			//Game Over

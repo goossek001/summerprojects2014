@@ -1,21 +1,17 @@
 Te Doen:
 
-Bugs:
-Soms blijft de mond los staan na het eten van een vis
-
 Hud:
-Een score (aantal en soorten vissen gegeten) (Deze score word vervangen voor tijd wanneer het spel word uitgespeeld)
-Een score op de plaats waar een vis sterft
+score vervangen voor tijd wanneer het spel word uitgespeeld
 
 AI:
 Valt nog te verbeteren
 
+Start:
+Een grote vis die langs zwemt en tijdens het zwemmen je uitpoepd/bevald
+
 Eind scene:
 Als je vis het volledige scherm in beslag neem, zoom je langzaam uit en zie je je vis in meer die wat kleiner is dan hem zelf en laat hij een boer
 Verloren/opgegeten spel
-
-Achtergrond:
-Een waterachtergrond animatie
 
 Willekeurige gebeurtenissen:
 Een haak met worm naar naar een willekeurige hoogte laten zakken, deze gaat weer omhoog wanneer er een vis is gevangen (Het touw kan breekt boven een bepaalde kracht, zodat een grote vis vrij kan komen)
