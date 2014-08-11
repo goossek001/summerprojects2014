@@ -47,7 +47,7 @@ public class SpawnHandler: MonoBehaviour {
 	public int PlayerSizeIndex() {
 		int i = 0;
 
-		while (i+1 < fishSizes.Length && Mathf.Abs (fishSizes[i]-player.transform.localScale.y) > Mathf.Abs (fishSizes[i+1]-player.transform.localScale.y)) {
+		while (player != null && i+1 < fishSizes.Length && Mathf.Abs (fishSizes[i]-player.transform.localScale.y) > Mathf.Abs (fishSizes[i+1]-player.transform.localScale.y)) {
 			i++;
 		}
 

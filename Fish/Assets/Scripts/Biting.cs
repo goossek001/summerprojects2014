@@ -56,7 +56,7 @@ public class Biting : MonoBehaviour {
 		float deltaSize = growhRate * food.transform.localScale.y / transform.localScale.y;
 		progress += deltaSize;
 
-		if (true || progress >= 1 && progressBar != null) {
+		if (progress >= 1 && progressBar != null) {
 			progress = 0;
 			progressBar.SetSize (progress);
 

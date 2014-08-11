@@ -21,9 +21,9 @@ public class FishAI : Swimming {
 
 		adrialineActiveted = false;
 		
-		float red = Random.value * 0.1f;
-		float green = Random.value * 0.1f;
-		float blue = Random.value * 0.1f;
+		float red = Random.value < 0.5f? 0.94f: 1;
+		float green = Random.value < 0.5f? 0.94f: 1;
+		float blue = Random.value < 0.5f? 0.94f: 1;
 		
 		Color skinColor = new Color (red, green, blue);
 		SpriteRenderer[] tailRenderers = GetComponentsInChildren<SpriteRenderer> ();
