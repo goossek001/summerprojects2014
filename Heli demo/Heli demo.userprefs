@@ -1,13 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Fish\Assets\Scripts\Biting.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Fish\Assets\Scripts\SpawnHandler.cs">
     <Files>
-      <File FileName="..\Fish\Assets\Scripts\FloatingScore.cs" Line="43" Column="3" />
-      <File FileName="..\Fish\Assets\Scripts\Biting.cs" Line="43" Column="31" />
-      <File FileName="..\Fish\Assets\Scripts\FishAI.cs" Line="1" Column="1" />
-      <File FileName="..\Fish\Assets\Scripts\BloodEffect.cs" Line="6" Column="27" />
-      <File FileName="..\Fish\Assets\Scripts\SpawnHandler.cs" Line="18" Column="21" />
-      <File FileName="..\Fish\Assets\Scripts\Swimming.cs" Line="31" Column="3" />
+      <File FileName="..\Fish\Assets\Scripts\Biting.cs" Line="59" Column="7" />
+      <File FileName="..\Fish\Assets\Scripts\FishAI.cs" Line="26" Column="41" />
+      <File FileName="..\Fish\Assets\Scripts\SpawnHandler.cs" Line="29" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
