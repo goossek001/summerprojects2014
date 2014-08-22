@@ -4,9 +4,6 @@ Hud:
 score vervangen voor tijd wanneer het spel word uitgespeeld
 Highscore
 
-AI:
-Valt nog te verbeteren
-
 Start:
 Een grote vis die langs zwemt en tijdens het zwemmen je uitpoepd/bevald
 
@@ -18,10 +15,6 @@ Willekeurige gebeurtenissen:
 Een haak met worm naar naar een willekeurige hoogte laten zakken, deze gaat weer omhoog wanneer er een vis is gevangen (Het touw kan breekt boven een bepaalde kracht, zodat een grote vis vrij kan komen)
 Een boot met net achterzich overlaten varen (net is op willekeurige hoogte en verschijnt alleen als de vis klein genoeg is om hem goed te kunnen ontwijken)
 Een sidderaal die langs zwemt en dichtbijzijnde vissen electrodiceert (deze vissen krijgen kruisjes als de ogen en zullen zinken) (Zeer grote vissen kunnen tegen de stroom en zullen de vis kunnen eten)
-
-Vis uiterlijk:
-Verschillende textures voor vissen
-Verschillende vormen vissen
 
 Gespiegelde vissen:
 Vissen die van rechts komen moeten ook de ogen aan de bovenkant hebben staan

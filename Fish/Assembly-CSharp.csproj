@@ -48,7 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Biting.cs" />
      <Compile Include="Assets\Scripts\BloodEffect.cs" />
+     <Compile Include="Assets\Scripts\Boat.cs" />
+     <Compile Include="Assets\Scripts\ChainSpawn.cs" />
      <Compile Include="Assets\Scripts\FishAI.cs" />
+     <Compile Include="Assets\Scripts\FixedYPosition.cs" />
      <Compile Include="Assets\Scripts\FloatingScore.cs" />
      <Compile Include="Assets\Scripts\MouthOpening.cs" />
      <Compile Include="Assets\Scripts\PlayerBiting.cs" />
