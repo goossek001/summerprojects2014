@@ -81,8 +81,13 @@ public class SpawnHandler: MonoBehaviour {
 			if (leavingObject.gameObject.GetComponent<FishAI>() != null) {
 				numberOfFish--;
 			}
-
-			Destroy (leavingObject.gameObject);
+			if (leavingObject.tag != "IgnoreBorders") {
+				GameObject objectToDestroy = leavingObject.gameObject;
+				while (objectToDestroy.transform.parent != null) {
+					objectToDestroy = objectToDestroy.transform.parent.gameObject;
+				}
+				Destroy (objectToDestroy.gameObject);
+			}
 		}
 	}
 }

@@ -22,6 +22,7 @@ public class ChainSpawn: MonoBehaviour {
 		GameObject previousShakle = net;
 		while ((position - start).magnitude < (end - start).magnitude) {
 			GameObject shakle = (GameObject) Instantiate(chainShaklePrefab, position, rotation);
+			shakle.transform.parent = transform;
 
 			previousShakle.GetComponent<HingeJoint2D> ().connectedBody = shakle.rigidbody2D;
 			previousShakle = shakle;
@@ -30,7 +31,7 @@ public class ChainSpawn: MonoBehaviour {
 		}
 
 		HingeJoint2D finalJoint = previousShakle.GetComponent<HingeJoint2D> ();
-		finalJoint.connectedAnchor = 0.5f * -(Vector2)renderer.bounds.size;
+		finalJoint.connectedAnchor = 0.5f * -(Vector2) renderer.bounds.size;
 		finalJoint.connectedBody = gameObject.rigidbody2D;
 	}
 }
