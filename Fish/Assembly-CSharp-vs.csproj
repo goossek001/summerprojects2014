@@ -50,7 +50,7 @@
      <Compile Include="Assets\Scripts\BloodEffect.cs" />
      <Compile Include="Assets\Scripts\Boat.cs" />
      <Compile Include="Assets\Scripts\ChainSpawn.cs" />
-     <Compile Include="Assets\Scripts\EffentHandler.cs" />
+     <Compile Include="Assets\Scripts\EventHandler.cs" />
      <Compile Include="Assets\Scripts\FishAI.cs" />
      <Compile Include="Assets\Scripts\FixedYPosition.cs" />
      <Compile Include="Assets\Scripts\FloatingScore.cs" />

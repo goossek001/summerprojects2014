@@ -12,7 +12,7 @@ Als je vis het volledige scherm in beslag neem, zoom je langzaam uit en zie je j
 Verloren/opgegeten spel
 
 Willekeurige gebeurtenissen:
-Een haak met worm naar naar een willekeurige hoogte laten zakken, deze gaat weer omhoog wanneer er een vis is gevangen (Het touw kan breekt boven een bepaalde kracht, zodat een grote vis vrij kan komen)
+Een boot die naar een positie vaard en een haak met worm naar laten zakken(naar willekeurige hoogte), deze gaat weer omhoog wanneer er een vis is gevangen(Het touw kan breekt boven een bepaalde kracht, zodat een grote vis vrij kan komen)
 Een boot met net achterzich overlaten varen (net is op willekeurige hoogte en verschijnt alleen als de vis klein genoeg is om hem goed te kunnen ontwijken)
 Een sidderaal die langs zwemt en dichtbijzijnde vissen electrodiceert (deze vissen krijgen kruisjes als de ogen en zullen zinken) (Zeer grote vissen kunnen tegen de stroom en zullen de vis kunnen eten)
 

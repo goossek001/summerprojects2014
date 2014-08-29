@@ -16,10 +16,12 @@ public class NetTrigger : MonoBehaviour {
 		if (trappedColider.gameObject.layer.Equals (LayerMask.NameToLayer("PlayerWall"))) {	
 			//Destroy all fish in the net when the net is about to leave the screen
 			foreach (GameObject fish in trappedFish) {
-				BloodEffect bloodEffect = fish.GetComponentInChildren<BloodEffect> ();
-				if (bloodEffect != null) bloodEffect.Activate();
+				if (fish != null) {
+					BloodEffect bloodEffect = fish.GetComponentInChildren<BloodEffect> ();
+					if (bloodEffect != null) bloodEffect.Activate();
 
-				Destroy(fish);
+					Destroy(fish);
+				}
 			}
 		} else {
 			//Check if the new object is a fish and add the fish to the list of trapped fish
@@ -40,7 +42,7 @@ public class NetTrigger : MonoBehaviour {
 			trappedObject = trappedObject.transform.parent.gameObject;
 		}
 		if (trappedObject.tag.Equals("Player") || trappedObject.tag.Equals("Fish")) {
-			trappedFish.Add(trappedObject);
+			trappedFish.Remove(trappedObject);
 		}
 	}
 }

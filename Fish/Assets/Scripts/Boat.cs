@@ -7,6 +7,6 @@ public class Boat : MonoBehaviour {
 	public float acceleration = 10;
 
 	public void FixedUpdate () {
-		rigidbody2D.AddForce (new Vector2 (acceleration * rigidbody2D.mass * Time.fixedDeltaTime, 0));
+		rigidbody2D.AddForce (new Vector2 (Mathf.Sign(transform.localScale.x) * acceleration * rigidbody2D.mass * Time.fixedDeltaTime, 0));
 	}
 }

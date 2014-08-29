@@ -76,18 +76,18 @@ public class SpawnHandler: MonoBehaviour {
 		fish.GetComponent<Biting>().Growh(fishSizes[sizeIndex]-1);
 	}
 
-	public void OnTriggerExit2D(Collider2D leavingObject) {
-		if (leavingObject.transform.parent == null) {
-			if (leavingObject.gameObject.GetComponent<FishAI>() != null) {
+	public void OnTriggerExit2D(Collider2D leavingObjectCollider) {
+		if (leavingObjectCollider.tag != "IgnoreBorders") {
+			GameObject leavingObject = leavingObjectCollider.gameObject;
+			while (leavingObject.transform.parent != null) {
+				leavingObject = leavingObject.transform.parent.gameObject;
+			}
+
+			if (leavingObject.GetComponent<FishAI>() != null) {
 				numberOfFish--;
 			}
-			if (leavingObject.tag != "IgnoreBorders") {
-				GameObject objectToDestroy = leavingObject.gameObject;
-				while (objectToDestroy.transform.parent != null) {
-					objectToDestroy = objectToDestroy.transform.parent.gameObject;
-				}
-				Destroy (objectToDestroy.gameObject);
-			}
+
+			Destroy (leavingObject);
 		}
 	}
 }
