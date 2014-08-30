@@ -1,10 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EffentHandler.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SpawnHandler.cs">
     <Files>
-      <File FileName="Assets\Scripts\NetTrigger.cs" Line="1" Column="19" />
-      <File FileName="Assets\Scripts\SpawnHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EffentHandler.cs" Line="7" Column="2" />
+      <File FileName="Assets\Scripts\EventHandler.cs" Line="22" Column="24" />
+      <File FileName="Assets\Scripts\Boat.cs" Line="10" Column="48" />
+      <File FileName="Assets\Scripts\ChainSpawn.cs" Line="24" Column="42" />
+      <File FileName="Assets\Scripts\NetTrigger.cs" Line="47" Column="3" />
+      <File FileName="Assets\Scripts\SpawnHandler.cs" Line="79" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

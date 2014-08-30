@@ -2,9 +2,11 @@
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="..\Fish\Assets\Scripts\SpawnHandler.cs">
     <Files>
-      <File FileName="..\Fish\Assets\Scripts\Biting.cs" Line="59" Column="7" />
-      <File FileName="..\Fish\Assets\Scripts\FishAI.cs" Line="26" Column="41" />
-      <File FileName="..\Fish\Assets\Scripts\SpawnHandler.cs" Line="29" Column="10" />
+      <File FileName="..\Fish\Assets\Scripts\EventHandler.cs" Line="22" Column="24" />
+      <File FileName="..\Fish\Assets\Scripts\Boat.cs" Line="10" Column="48" />
+      <File FileName="..\Fish\Assets\Scripts\ChainSpawn.cs" Line="24" Column="42" />
+      <File FileName="..\Fish\Assets\Scripts\NetTrigger.cs" Line="47" Column="3" />
+      <File FileName="..\Fish\Assets\Scripts\SpawnHandler.cs" Line="79" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -3,7 +3,9 @@ using System.Collections;
 
 public class FloatingScore: MonoBehaviour{
 
-	public float lifeTime = 5;
+	public float lifeTime = 2.5f;
+	public float fadeTime = 0.5f;
+
 	public Sprite[] numberSprites;
 
 	private float timer;
@@ -31,14 +33,16 @@ public class FloatingScore: MonoBehaviour{
 	
 	// Update is called once per frame
 	public void Update () {
-		for (int i = 0; i < numbers.Length; i++) {
-			Color color = numbers[i].renderer.material.color;
-			color.a =  (lifeTime - timer) / lifeTime;
-			numbers[i].renderer.material.color = color;
+		if (timer > lifeTime) {
+			for (int i = 0; i < numbers.Length; i++) {
+				Color color = numbers[i].renderer.material.color;
+				color.a =  1 - (timer - lifeTime) / fadeTime;
+				numbers[i].renderer.material.color = color;
+			}
 		}
 
 		timer += Time.deltaTime;
-		if (timer >= lifeTime) {
+		if (timer >= lifeTime + fadeTime) {
 			Destroy(gameObject);
 		}
 	}
